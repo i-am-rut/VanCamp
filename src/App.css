@@ -14,7 +14,7 @@ header {
     width: 100%;
     display: flex;
     align-items: center;
-    padding: 0 0.625rem;
+    padding: 0 1rem;
     justify-content: space-between;
 }
 
@@ -33,6 +33,10 @@ header {
 
 .link-button:hover {
     transform: translate(1px, 1px);
+}
+
+.no-underline {
+    text-decoration: none;
 }
 
 .site-logo {
@@ -54,6 +58,12 @@ nav > a {
     line-height: 22.92px;
     text-decoration: none;
     color: #4D4D4D;
+}
+
+nav a:hover {
+    color: #161616;
+    text-decoration: underline;
+    font-weight: 800;
 }
 
 /* Home Page -----------------------------------------------------*/
@@ -91,6 +101,7 @@ nav > a {
     line-height: 2rem;
     width: 100%;
     text-align: center;
+    padding: 0.3rem 0;
     border-radius: 0.3rem;
     margin-top: 1.75rem;
     cursor: pointer;
@@ -99,6 +110,7 @@ nav > a {
 
 .home-container a:hover {
     transform: translate(1px, 1px);
+    text-decoration: underline;
 }
 
 /* About Page -----------------------------------------------------*/
@@ -146,4 +158,87 @@ nav > a {
     color: white;
     background-color: #161616;
     border-radius: 0.625rem;
+}
+
+
+/* Vans Page -----------------------------------------------------*/
+
+.vans-list-container {
+    padding: 0 1.5rem;
+}
+
+.vans-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.van-card-container  {
+    color: #161616;
+    text-decoration: none;
+}
+
+.van-card-img {
+    width: 100%;
+    border-radius: 0.3rem;
+}
+
+.van-card-info {
+    /* display: flex;
+    align-items: center;
+    justify-content: space-between; */
+}
+
+.van-card-info > h2 {
+    color: #161616;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 31.66px;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+}
+
+.van-card-info p {
+    margin-top: 0.5rem;
+    color: #161616;
+}
+
+.van-type {
+    padding: 0.5rem 1rem;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0.4rem;
+}
+
+.simple {
+    background-color: #E17654;
+}
+
+.luxury {
+    background-color: #161616;
+}
+
+.rugged {
+    background-color: #115E59;
+}
+
+
+
+
+
+
+
+
+
+
+/* Footer -----------------------------------------------------*/
+
+footer {
+    position: relative;
+    margin-top: 3.5rem;
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #252525;
+    color: white;
 }
