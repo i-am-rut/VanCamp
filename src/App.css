@@ -16,6 +16,7 @@ header {
     align-items: center;
     padding: 0 1rem;
     justify-content: space-between;
+    box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.6);
 }
 
 .link-button {
@@ -240,6 +241,7 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     align-items: start;
+    margin-top: 3.5rem;
 }
 .van-detail-main-image { 
     width: 100%;
@@ -276,6 +278,36 @@ nav a:hover {
     text-align: center;
     border: none;
 }
+
+
+/* Host Section -----------------------------------------------------*/
+
+.host-navbar-container {
+    margin-top: 2rem;
+    padding: 0 1.5rem;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sub-navbar-elem {
+    color: #4D4D4D;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.sub-navbar-elem:hover {
+    font-size: 1.05rem;
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+
+
+
+
+
 
 
 
