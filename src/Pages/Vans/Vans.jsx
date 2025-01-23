@@ -10,14 +10,16 @@ const Vans = () => {
   }, [])
 
   const vanElements = vans.map(van => (
-    <Link to={`/vans/${van.id}`} key={van.id} className='van-card-container'>
-      <img src={van.imageUrl} className='van-card-img' alt={`${van.name} van`}/>
-      <div className='van-card-info'>
-        <h2>{van.name}</h2>
-        <p>${van.price}<span>/day</span></p>
-      </div>
-      <i className={`van-type ${van.type}`}>{van.type}</i>
-    </Link>
+    <div key={van.id} className='van-card-container'>
+      <Link to={`/vans/${van.id}`}>
+        <img src={van.imageUrl} className='van-card-img' alt={`${van.name} van`}/>
+        <div className='van-card-info'>
+          <h2>{van.name}</h2>
+          <p><span>${van.price}</span>/day</p>
+        </div>
+        <i className={`van-type ${van.type}`}>{van.type}</i>
+      </Link>
+    </div>
   ))
 
   return (

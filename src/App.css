@@ -69,7 +69,7 @@ nav a:hover {
 /* Home Page -----------------------------------------------------*/
 
 .home-container {
-    background: url("./images/home-background.png") no-repeat center center;
+    background: url("./Images/home-background.png") no-repeat center center;
     background-size: cover;
     min-height: 21.875rem;
     padding: 3rem 1.5rem;
@@ -168,12 +168,13 @@ nav a:hover {
 }
 
 .vans-list {
+    margin-top: 3.5rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
 }
 
-.van-card-container  {
+.van-card-container  a {
     color: #161616;
     text-decoration: none;
 }
@@ -183,11 +184,11 @@ nav a:hover {
     border-radius: 0.3rem;
 }
 
-.van-card-info {
-    /* display: flex;
+/* .van-card-info {
+    display: flex;
     align-items: center;
-    justify-content: space-between; */
-}
+    justify-content: space-between;
+} */
 
 .van-card-info > h2 {
     color: #161616;
@@ -201,6 +202,10 @@ nav a:hover {
 .van-card-info p {
     margin-top: 0.5rem;
     color: #161616;
+}
+
+.van-card-info > p > span {
+    font-weight: 700;
 }
 
 .van-type {
@@ -225,9 +230,52 @@ nav a:hover {
 
 
 
+/* Van Details Page -----------------------------------------------------*/
 
+.van-details-container {
+    padding: 0 1.5rem;
+}
 
+.van-details {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.van-detail-main-image { 
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border-radius: 0.4rem;
+}
 
+.van-price {
+    margin-top: 0;
+    font-weight: 800;
+}
+
+.van-details p {
+    margin-top: 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 23.92px;
+}
+
+.van-description {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+.van-details-rent-btn {
+    background-color: #E17654;
+    padding: 0.6rem;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    width: 100%;
+    border-radius: 0.3rem;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    border: none;
+}
 
 
 
