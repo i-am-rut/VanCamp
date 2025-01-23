@@ -76,7 +76,7 @@ nav a:hover {
 /* Home Page -----------------------------------------------------*/
 
 .home-container {
-    background: url("./Images/home-background.png") no-repeat center center;
+    background: url("./images/home-background.png") no-repeat center center;
     background-size: cover;
     min-height: 21.875rem;
     padding: 3rem 1.5rem;
