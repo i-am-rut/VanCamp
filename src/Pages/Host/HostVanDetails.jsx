@@ -32,7 +32,7 @@ const HostVanDetails = () => {
                             <p><span className='price'>${hostVan.price}</span>/day</p>
                         </div>
                     </div>
-                    <div className='host-van-details-navbar-container'>
+                    <nav className='host-van-details-navbar-container'>
                         <NavLink 
                             to='.'
                             end
@@ -49,8 +49,8 @@ const HostVanDetails = () => {
                             className='sub-navbar-elem'
                             style={({ isActive }) => (isActive ? activeStyles : null)}
                         >Photos</NavLink>
-                    </div>
-                    <Outlet />
+                    </nav>
+                    <Outlet context={hostVan} />
                 </div> 
             ) : <h1>Loading...</h1>}        
     </div>

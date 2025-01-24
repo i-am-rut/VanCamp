@@ -1,21 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React from 'react'
+import { useOutletContext } from 'react-router-dom'
 
 const HostVanDetailsPrice = () => {
 
-    const param = useParams()
-    const [van, setVan] = useState({})
-    console.log(param.id)
+  const hostVan = useOutletContext()
+  console.log(hostVan)
 
-    useEffect(() => {
-        fetch(`/api/host/vans/${param.id}`)
-            .then(res => res.json())
-            .then(data => setVan(data.vans[0]))
-    }, [param.id])
 
   return (
     <h3>
-      ${van.price}<span className='span-normal'>/day</span>
+      ${hostVan.price}<span className='span-normal'>/day</span>
     </h3>
   )
 }

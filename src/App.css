@@ -249,11 +249,16 @@ nav a:hover {
     padding: 0 1.5rem;
 }
 
+.van-details-backnav {
+    display: block;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
 .van-details {
     display: flex;
     flex-direction: column;
     align-items: start;
-    margin-top: 3.5rem;
 }
 .van-detail-main-image { 
     width: 100%;
