@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import Menu from './Menu/index'
+import { GiHamburgerMenu } from 'react-icons/gi'
 
 const Header = () => {
   return (
@@ -18,6 +20,14 @@ const Header = () => {
               to="/vans" 
               className={({isActive}) => isActive ? "selected" : ""}
             >Vans</NavLink>
+            <Menu>
+              <Menu.Button><GiHamburgerMenu /></Menu.Button>
+              <Menu.Dropdown>
+                <Link to='/host'>Host</Link>
+                <Link to='/about'>About</Link>
+                <Link to='/vans'>Vans</Link>
+              </Menu.Dropdown>
+            </Menu>
         </nav>
     </header>
   )

@@ -73,6 +73,10 @@ nav a:hover {
     font-weight: 800;
 }
 
+.menu-container {
+    display: none;
+}
+
 /* Home Page -----------------------------------------------------*/
 
 .home-container {
@@ -84,6 +88,8 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     align-items: start;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
 }
 
 .home-container > h1 {
@@ -283,6 +289,12 @@ nav a:hover {
     font-weight: 700;
     text-align: center;
     border: none;
+    cursor: pointer;    
+    transition: transform .1s ease-in-out;
+}
+
+.van-details-rent-btn:hover {
+    transform: translate(1px, 1px);
 }
 
 
@@ -294,6 +306,7 @@ nav a:hover {
     width: 60%;
     max-width: 25rem;
     display: flex;
+    margin-bottom: 2.5rem;
     justify-content: space-between;
 }
 
@@ -311,8 +324,50 @@ nav a:hover {
 }
 
 
+/* Host vans -----------------------------------------------------*/
 
+.host-vans-page-container {
+    padding: 0 1.5rem;
+}
 
+.host-vans-page-container h1 {
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.host-vans-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.host-van-card {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.3rem 1rem;
+    width: 100%;
+    background-color: #FFFFFF;
+    text-decoration: none;
+    color: #161616;
+    border-radius: 0.4rem;
+    margin-bottom: 1rem;
+    box-shadow: 0.125rem 0.3rem 0.5rem rgba(0, 0, 0, 0.6);
+}
+
+.host-van-card-image {
+    height: 4.125rem;
+    width: 4.125rem;
+    border-radius: 0.4rem;
+}
+
+.host-van-card-info h3 {
+    margin-bottom: 0rem;
+}
+
+.host-van-card-info p {
+    margin-top: 0;
+}
 
 
 
@@ -323,6 +378,10 @@ nav a:hover {
 
 /* Wrapping Outlet in layout.jsx in semantic main tag */
 main {
+    /* margin-top: 2rem; 
+    max-width: 50rem;
+    margin-left: auto;
+    margin-right: auto; */
     margin-bottom: 5rem;
 }
 
@@ -330,7 +389,7 @@ main {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-  }
+}
 
 footer {
     margin-top: auto;
@@ -344,15 +403,3 @@ footer {
     font-weight: 500;
     box-shadow: 0 2rem 1rem rgba(0, 0, 0, 0.6);
 }
-
-/* footer {
-    background-color: #161616;
-    color: #AAAAAA;
-    height: 74px;
-    display: flex;
-    flex-shrink: 0;
-    justify-content: center;
-    align-items: center;
-    margin-top: auto;
-    font-weight: 500;
-} */
