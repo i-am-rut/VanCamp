@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, NavLink, Outlet, useParams } from 'react-router-dom'
 
 const HostVanDetails = () => {
 
     const param = useParams()
     const [hostVan, setHostVan] = useState(null)
+    const activeStyles = {
+        fontWeight: "bold",
+        textDecoration: "underline",
+        color: "#161616"
+    };
     
     useEffect(() => {
         fetch(`/api/host/vans/${param.id}`)
@@ -15,7 +20,7 @@ const HostVanDetails = () => {
 
   return (
     <div className='host-van-details-page-container'>
-        <Link to='/host/vans' className='back-nav-link'>&#8592; Back to all vans</Link>
+        <Link to='..' relative='path' className='back-nav-link'>&#8592; Back to all vans</Link>
         {hostVan? 
             (
                 <div className='host-van-details-container'>
@@ -24,9 +29,28 @@ const HostVanDetails = () => {
                         <div className='host-van-details-info'>
                             <i className={`van-type ${hostVan.type}`}>{hostVan.type}</i>
                             <h2>{hostVan.name}</h2>
-                            <p><span>${hostVan.price}</span>/day</p>
+                            <p><span className='price'>${hostVan.price}</span>/day</p>
                         </div>
                     </div>
+                    <div className='host-van-details-navbar-container'>
+                        <NavLink 
+                            to='.'
+                            end
+                            className='sub-navbar-elem'
+                            style={({ isActive }) => (isActive ? activeStyles : null)}
+                        >Details</NavLink>
+                        <NavLink 
+                            to='price'
+                            className='sub-navbar-elem'
+                            style={({ isActive }) => (isActive ? activeStyles : null)}
+                        >Pricing</NavLink>
+                        <NavLink 
+                            to='photos'
+                            className='sub-navbar-elem'
+                            style={({ isActive }) => (isActive ? activeStyles : null)}
+                        >Photos</NavLink>
+                    </div>
+                    <Outlet />
                 </div> 
             ) : <h1>Loading...</h1>}        
     </div>

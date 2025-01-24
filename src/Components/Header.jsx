@@ -9,15 +9,15 @@ const Header = () => {
         <Link to="/" className='site-logo' >#VanCamp</Link>
         <nav>
             <NavLink 
-              to="/host" 
+              to="host" 
               className={({isActive}) => isActive ? "selected" : ""}
             >Host</NavLink>
             <NavLink 
-              to="/about"
+              to="about"
               className={({isActive}) => isActive ? "selected" : ""}
             >About</NavLink>
             <NavLink 
-              to="/vans" 
+              to="vans" 
               className={({isActive}) => isActive ? "selected" : ""}
             >Vans</NavLink>
             <Menu>

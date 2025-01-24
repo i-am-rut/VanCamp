@@ -392,18 +392,67 @@ nav a:hover {
 
 .host-van-details-preview {
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
     align-items: center;
+    margin-bottom: 2rem;
+}
+
+.price {
+    font-weight: bold;
+}
+.span-bold {
+    font-weight: bold;
+    font-size: 1.125rem;
+}
+
+.span-normal {
+    font-weight: 400;
+    font-size: 1rem;
 }
 
 .host-van-details-image {
     width: 35%;
+    min-width: 10rem;
     height: 35%;
-    border-radius: 0.4rem;
+    min-height: 10rem;
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.6);
 }
 
+.host-van-details-navbar-container {
+    width: 50%;
+    min-width: 12rem;
+    max-width: 15rem;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.8rem;
+    border-bottom: 0.125rem solid #161616;
+    margin-bottom: 2rem;
+}
 
+.host-vans-details-info-container p {
+    line-height: 1.5rem;
+    font-weight: 500;
+}
+
+.host-van-details-page-photos-container {
+    display: flex;
+    gap: 1.2rem;
+    padding: 0.8rem 1rem;
+    overflow-x: scroll;
+    width: 60%;
+    max-width: 30rem;
+    /* border: 0.075rem solid #4D4D4D; */
+}
+
+.host-van-details-page-photos-container::-webkit-scrollbar {
+    display: none; /* Hides scrollbar in Chrome, Safari, and Opera */
+  }
+
+.host-van-details-page-photos-container img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.3rem;
+}
 
 
 
