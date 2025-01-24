@@ -356,8 +356,8 @@ nav a:hover {
 }
 
 .host-van-card-image {
-    height: 4.125rem;
-    width: 4.125rem;
+    height: 15%;
+    width: 15%;
     border-radius: 0.4rem;
 }
 
@@ -369,6 +369,39 @@ nav a:hover {
     margin-top: 0;
 }
 
+
+/* Host van details -----------------------------------------------------*/
+
+.host-van-details-page-container {
+    padding: 0 1.5rem;
+}
+
+.back-nav-link {
+    text-decoration: none;
+    color: #161616;
+    font-weight: 700;
+}
+
+.host-van-details-container {
+    background-color: white;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem rgba(146, 121, 121, 0.6);
+}
+
+.host-van-details-preview {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.host-van-details-image {
+    width: 35%;
+    height: 35%;
+    border-radius: 0.4rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.6);
+}
 
 
 
