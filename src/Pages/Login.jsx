@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom'
 import { FaEye } from 'react-icons/fa'
 
 const Login = () => {
+
+    const handleSignupClick = (event) => {
+        event.preventDefault()
+    }
+
   return (
     <div className='login-page-container'>
         <h1>Sign in to your account</h1>
@@ -13,7 +18,7 @@ const Login = () => {
                     <input id='login-password-input' placeholder='Enter password'/>
                     <button><FaEye /></button>
                 </div>
-                <button className='sign-in-button'>Sign in</button>
+                <button onClick={handleSignupClick} className='sign-in-button'>Sign in</button>
             </form>
             <div className='login-page-signup-link-container'>
                 <p>Don't have an account?</p>

@@ -135,6 +135,7 @@ nav > a > svg {
     border-bottom-right-radius: 0.4rem;
     width: 15%;
     font-size: 1.125rem;
+    cursor: pointer;
 }
 
 .sign-in-button {
@@ -148,6 +149,7 @@ nav > a > svg {
     font-weight: bold;
     color: white;
     margin-bottom: 2rem;
+    font-family: 'Inter', sans-serif;
 }
 
 .login-page-signup-link-container{
@@ -161,8 +163,81 @@ nav > a > svg {
     text-decoration: none;
     color: #E17654;
     font-weight: bold;
+    cursor: pointer;
 }
 
+.login-page-signup-link-container a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* Signup Page -----------------------------------------------------*/
+
+.signup-page-container {
+    padding: 3rem 1.5rem;
+}
+
+.signup-form-container {
+    max-width: 40rem;
+    min-width: 20rem;
+    border: 2px solid #4D4D4D;
+    border-radius: 0.4rem;
+}
+
+.signup-form-container form {
+    padding: 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+}
+
+.signup-form-container form > input {
+    padding: 0.6rem 1rem;
+    width: 100%;
+    border-radius: 0.4rem;
+    border: 0.125rem solid #AAAAAA;
+}
+
+/* .signup-form-container form input {
+
+} */
+
+
+.signup-page-password, .signup-page-repassword {
+    margin-bottom: 0;
+}
+
+.signup-page-password > input , .signup-page-repassword > input {
+    border-top-left-radius: 0.4rem;
+}
+
+.signup-page-password > button , .signup-page-repassword > button {
+    border-top-right-radius: 0.4rem;
+}
+
+.signup-form-container form select {
+    padding: 0.6rem 1rem;
+    border-radius: 0.4rem;
+    width: 50%;
+}
+
+.role-selector {
+    margin-bottom: 2rem;
+}
+
+.register-user-button {
+    padding: 0.6rem 1rem;
+    border-radius: 0.4rem;
+    background-color: #FF8C38;
+    color: white;
+    font-weight: bold;
+    border: none;
+    letter-spacing: 0.075rem;
+    font-family: 'Inter', sans-serif;
+    align-self: flex-end;
+}
 
 
 /* Home Page -----------------------------------------------------*/
