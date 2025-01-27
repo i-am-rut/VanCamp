@@ -15,6 +15,8 @@ import HostVanDetails from './Pages/Host/HostVanDetails';
 import HostVanDetailsInfo from './Pages/Host/HostVanDetailsInfo';
 import HostVanDetailsPhotos from './Pages/Host/HostVanDetailsPhotos';
 import HostVanDetailsPrice from './Pages/Host/HostVanDetailsPrice';
+import Login from './Pages/Login';
+import Signup from './Pages/Signup';
 
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
             </Route>
             <Route path='reviews' element={<Reviews />} />
           </Route>
+          <Route path='login' element={<Login />} />
+          <Route path='signup' element={<Signup />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import Menu from './Menu/index'
 import { GiHamburgerMenu } from 'react-icons/gi'
+import { CgProfile } from 'react-icons/cg'
 
 const Header = () => {
   return (
@@ -20,6 +21,7 @@ const Header = () => {
               to="vans" 
               className={({isActive}) => isActive ? "selected" : ""}
             >Vans</NavLink>
+            <Link to='login'><CgProfile /></Link>
             <Menu>
               <Menu.Button><GiHamburgerMenu /></Menu.Button>
               <Menu.Dropdown>

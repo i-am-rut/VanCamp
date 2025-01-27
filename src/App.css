@@ -73,9 +73,97 @@ nav a:hover {
     font-weight: 800;
 }
 
+nav > a > svg {
+    margin-top: 0.075rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #161616;
+}
+
 .menu-container {
     display: none;
 }
+
+
+/* Login Page -----------------------------------------------------*/
+
+.login-page-container {
+    margin-top: 2rem;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form-container {
+    width: 90%;
+    max-width: 40rem;
+    min-width: 20rem;
+}
+
+.login-form-container > form > input {
+    padding: 0.6rem 1rem;
+    border-radius: 0.4rem;
+    border: 0.125rem solid #AAAAAA;
+    border-bottom: none;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    width: 100%;
+}
+
+.password-input-and-eyebutton-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 2rem;
+}
+
+.password-input-and-eyebutton-container > input {
+    padding: 0.6rem 1rem;
+    border-bottom-left-radius: 0.4rem;
+    border: 0.125rem solid #AAAAAA;
+    border-right: none;
+    width: 85%;
+}
+
+.password-input-and-eyebutton-container > button {
+    padding: 0.39rem 1rem;
+    border: 0.125rem solid #AAAAAA;
+    border-left: none;
+    background-color: white;
+    border-bottom-right-radius: 0.4rem;
+    width: 15%;
+    font-size: 1.125rem;
+}
+
+.sign-in-button {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    border-radius: 0.4rem;
+    border: none;
+    font-size: 1.125rem;
+    letter-spacing: 0.075rem;
+    background-color: #FF8C38;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.login-page-signup-link-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.login-page-signup-link-container a {
+    text-decoration: none;
+    color: #E17654;
+    font-weight: bold;
+}
+
+
 
 /* Home Page -----------------------------------------------------*/
 
