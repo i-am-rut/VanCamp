@@ -5,44 +5,58 @@ const Vans = () => {
   const [vans, setVans] = useState([])
   const [searchParams, setSearchparams] = useSearchParams()
 
-  const typeFilter = searchParams.get("type")
+  const categoryFilter = searchParams.get("category")
   
   
 
-  useEffect(() => {fetch("/api/vans")
-    .then(res => res.json())
-    .then(data => setVans(data.vans))
-  }, [])
+  const getVans = async() => {
+    try{
+      const response = await fetch("http://localhost:5000/api/vans",{method: "GET"})
 
+      if(response.ok) {
+        const data = await response.json()
+        setVans(data)
+      } else {
+        const errorData = await response.json()
+        console.log('Error:-', errorData)
+      }
+    } catch (error) {
+      console.log('Request failed:', error)
+    }
+  }
+  
+  useEffect(() => {
+    getVans()
+  }, [categoryFilter])
 
   const vanElements = vans.map(van => (
-    <div key={van.id} className='van-card-container'>
-      <Link to={`/vans/${van.id}`}>
-        <img src={van.imageUrl} className='van-card-img' alt={`${van.name} van`}/>
+    <div key={van._id} className='van-card-container'>
+      <Link to={`/vans/${van._id}`}>
+        <img src={van.images[0]} className='van-card-img' alt={`${van.name} van`}/>
         <div className='van-card-info'>
           <h2>{van.name}</h2>
-          <p><span>${van.price}</span>/day</p>
+          <p><span>₹{van.price}</span>/day</p>
         </div>
-        <i className={`van-type ${van.type}`}>{van.type}</i>
+        <i className={`van-type ${van.category}`}>{van.category}</i>
       </Link>
     </div>
   ))
 
-  const vanTypes = [...new Set(vans.map(van => van.type))]
-  const typeFilterButtons = vanTypes.map(type => 
-    <div key={type} className='filter-buttons-container'>
+  const vanCategories = [...new Set(vans.map(van => van.category))]
+  const categoryFilterButtons = vanCategories.map(category => 
+    <div key={category} className='filter-buttons-container'>
       <button 
-        className={`van-type ${typeFilter === type && type} filter-button`}
-        onClick={() => setSearchparams({type: type})}
-      >{type}</button>
+        className={`van-type ${categoryFilter === category && category} filter-button`}
+        onClick={() => setSearchparams({category: category})}
+      >{category}</button>
     </div>
   )
 
   return (
     <div className='vans-list-container'>
       <h1>Explore our van options</h1>
-      {typeFilterButtons}
-      {typeFilter && 
+      {categoryFilterButtons}
+      {categoryFilter && 
         <button 
           className='van-type filter-button'
           onClick={() => setSearchparams({})}
