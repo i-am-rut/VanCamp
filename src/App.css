@@ -191,6 +191,7 @@ nav > a > svg {
     max-width: 40rem;
     min-width: 20rem;
     border: 2px solid #4D4D4D;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.6);
     border-radius: 0.4rem;
 }
 
@@ -461,9 +462,63 @@ nav > a > svg {
     line-height: 23.92px;
 }
 
+.van-details h4 {
+    margin-top: 0;
+}
+
 .van-description {
     margin-top: 0;
     margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 0.125rem solid #4D4D4D;
+}
+
+.van-details-check-availability-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.check-availability-title {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    font-weight: bold;
+}
+
+.from-date-container, .till-date-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+
+.van-details-check-availability-form  input {
+    padding: 0.6rem 1rem;
+    border-radius: 0.4rem;
+}
+
+.check-availability-form-error {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.check-availability-button {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    padding: 0.4rem 1rem;
+    border-radius: 0.4rem;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 0.075rem;
+    background-color: #4D4D4D;
+    cursor: pointer;
+}
+
+.check-availability-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
 .van-details-rent-btn {
@@ -479,10 +534,18 @@ nav > a > svg {
     border: none;
     cursor: pointer;    
     transition: transform .1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .van-details-rent-btn:hover {
     transform: translate(1px, 1px);
+}
+
+.van-details-rent-btn > svg {
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
 }
 
 
