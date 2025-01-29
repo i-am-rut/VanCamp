@@ -1,5 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Signup from './Pages/Signup';
+import Login from './Pages/Login';
 import Home from './Pages/Home';
 import About from './Pages/About';
 import Vans from './Pages/Vans/Vans';
@@ -11,12 +13,11 @@ import Income from './Pages/Host/Income';
 import Reviews from './Pages/Host/Reviews';
 import HostLayout from './Components/HostLayout';
 import HostVans from './Pages/Host/HostVans';
+import AddHostVan from './Pages/Host/AddHostVan';
 import HostVanDetails from './Pages/Host/HostVanDetails';
 import HostVanDetailsInfo from './Pages/Host/HostVanDetailsInfo';
 import HostVanDetailsPhotos from './Pages/Host/HostVanDetailsPhotos';
 import HostVanDetailsPrice from './Pages/Host/HostVanDetailsPrice';
-import Login from './Pages/Login';
-import Signup from './Pages/Signup';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <Route index element={<Dashboard />} />
             <Route path='income' element={<Income />} />
             <Route path='vans' element={<HostVans />} />
+            <Route path='vans/create-van' element={<AddHostVan />} />
             <Route path='vans/:id' element={<HostVanDetails />} >
               <Route index element={<HostVanDetailsInfo />} />
               <Route path='price' element={<HostVanDetailsPrice />} />

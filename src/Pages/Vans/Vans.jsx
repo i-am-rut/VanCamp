@@ -24,7 +24,7 @@ const Vans = () => {
       console.log('Request failed:', error)
     }
   }
-  
+
   useEffect(() => {
     getVans()
   }, [categoryFilter])
@@ -35,7 +35,7 @@ const Vans = () => {
         <img src={van.images[0]} className='van-card-img' alt={`${van.name} van`}/>
         <div className='van-card-info'>
           <h2>{van.name}</h2>
-          <p><span>₹{van.price}</span>/day</p>
+          <p><span>&#8377;{van.basePrice}</span>/day</p>
         </div>
         <i className={`van-type ${van.category}`}>{van.category}</i>
       </Link>

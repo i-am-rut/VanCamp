@@ -34,7 +34,7 @@ const VanDetails = () => {
             <img src={van.images[0]} alt={`${van.name} van`} className='van-detail-main-image' />
             <i className={`van-type ${van.type}`} >{van.type}</i>
             <h1>{van.name}</h1>
-            <p><span className='van-price'>₹{van.price}</span>/day</p>
+            <p><span className='van-price'>&#8377;{van.basePrice}</span>/day</p>
             <p className='van-description'>{van.description}</p>
             <button className='van-details-rent-btn'>Rent this van</button>
         </div>
