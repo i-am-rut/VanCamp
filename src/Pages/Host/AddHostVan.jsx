@@ -16,18 +16,18 @@ const AddHostVan = () => {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [loading, setLoading] = useState(false)
 
-    const validateForm = () => {
-        const { name, description, basePrice, location, category, hostId, images } = van;
-        if (name && description && basePrice && location && category && hostId && images.length > 0) {
-            setDone(true);
-        } else {
-            setDone(false);
-            setMessage('All fields are mandatory');
-        }
-    };
-
+    
     
     useEffect(() => {
+        const validateForm = () => {
+            const { name, description, basePrice, location, category, hostId, images } = van;
+            if (name && description && basePrice && location && category && hostId && images.length > 0) {
+                setDone(true);
+            } else {
+                setDone(false);
+                setMessage('All fields are mandatory');
+            }
+        };
         validateForm();
       }, [van]); 
     

@@ -6,23 +6,23 @@ const VanDetails = () => {
     const param = useParams()
     const [van, setVan] = useState(null)
 
-    const getVan = async() => {
-        try{
-          const response = await fetch(`http://localhost:5000/api/vans/${param.id}`,{method: "GET"})
     
-          if(response.ok) {
-            const data = await response.json()
-            setVan( data)
-          } else {
-            const errorData = await response.json()
-            console.log('Error:-', errorData)
+    useEffect(() => {
+        const getVan = async() => {
+            try{
+              const response = await fetch(`http://localhost:5000/api/vans/${param.id}`,{method: "GET"})
+        
+              if(response.ok) {
+                const data = await response.json()
+                setVan( data)
+              } else {
+                const errorData = await response.json()
+                console.log('Error:-', errorData)
+              }
+            } catch (error) {
+              console.log('Request failed:', error)
+            }
           }
-        } catch (error) {
-          console.log('Request failed:', error)
-        }
-      }
-      
-      useEffect(() => {
         getVan()
       }, [param.id])
 
