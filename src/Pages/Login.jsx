@@ -37,7 +37,6 @@ const Login = () => {
         setIsVisible(prev => !prev)
     }
 
-    console.log(loginData)
     const handleSignupClick = async (event) => {
         event.preventDefault();
     
@@ -62,9 +61,10 @@ const Login = () => {
     
             // Check if the response is OK
             if (response.ok) {
-                const data = await response.json(); // Parse the response as JSON
-                console.log('User logged in successfully:', data);
-                // Handle success, e.g., show success message or redirect user
+                const data = await response.json(); 
+                // console.log('User logged in successfully:', data);
+                localStorage.setItem('token', data.token)
+
             } else {
                 const errorData = await response.json(); // Parse the error response
                 console.log('Error registering user:', errorData);

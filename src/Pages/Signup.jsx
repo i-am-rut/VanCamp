@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { FaEye } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 
 const Signup = () => {
+    const navigate = useNavigate()
 
     const[regData, setRegData] = useState({
         name: '',
@@ -61,9 +63,14 @@ const Signup = () => {
     
             // Check if the response is OK
             if (response.ok) {
-                const data = await response.json(); // Parse the response as JSON
-                console.log('User registered successfully:', data);
-                // Handle success, e.g., show success message or redirect user
+                const data = await response.json(); 
+
+                if(data.message === "User successfully registered!"){
+                    setMessage(`${data.message} Redirecting to Login page in 4 seconds`)
+                }
+                setTimeout(() => {
+                    navigate('/login')
+                }, 4000)
             } else {
                 const errorData = await response.json(); // Parse the error response
                 console.log('Error registering user:', errorData);
@@ -73,7 +80,7 @@ const Signup = () => {
         } catch (error) {
             console.log('Request failed:', error);
             setMessage('An error occurred during registration');
-        }
+        } 
     };
     
 
@@ -86,7 +93,6 @@ const Signup = () => {
         })
     }
 
-    console.log(regData)
   return (
     <div className='signup-page-container'>
         <h1>Create a VanCamp account</h1>
