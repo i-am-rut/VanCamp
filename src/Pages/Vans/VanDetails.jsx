@@ -15,32 +15,18 @@ const VanDetails = () => {
   })
   const [message, setMessage] = useState('')
 
-  const ValidateForm = () => {
-    const { fromDate, tillDate } = availability
-    const today = new Date()
-    const fromDateObj = new Date(fromDate)
-    const tillDateObj = new Date(tillDate)
-
-    if (fromDateObj >= today && tillDateObj >= fromDateObj) {
-      setDone(true)
-      setFormError('')
-    } else {
-      setDone(false)
-      setFormError('From date cannot be in the past or after the till date.')
-    }
-  }
-
+  
   const dateConverter = (date) => {
     const parts = date.split('-')
     const newDate = `${parts[2]}-${parts[1]}-${parts[0]}`
     return newDate
   }
-
+  
   useEffect(() => {
     const getVan = async () => {
       try {
         const response = await fetch(`http://localhost:5000/api/vans/${param.id}`, { method: "GET" })
-
+        
         if (response.ok) {
           const data = await response.json()
           setVan(data)
@@ -54,8 +40,22 @@ const VanDetails = () => {
     }
     getVan()
   }, [param.id])
-
+  
   useEffect(() => {
+    const ValidateForm = () => {
+      const { fromDate, tillDate } = availability
+      const today = new Date()
+      const fromDateObj = new Date(fromDate)
+      const tillDateObj = new Date(tillDate)
+  
+      if (fromDateObj >= today && tillDateObj >= fromDateObj) {
+        setDone(true)
+        setFormError('')
+      } else {
+        setDone(false)
+        setFormError('From date cannot be in the past or after the till date.')
+      }
+    }
     if (availability.fromDate && availability.tillDate) {
       ValidateForm()
     }
