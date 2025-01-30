@@ -11,7 +11,7 @@ const Vans = () => {
 
   const getVans = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/vans", { method: "GET" })
+      const response = await fetch("https://vancamp-backend.onrender.com/api/vans", { method: "GET" })
 
       if (response.ok) {
         const data = await response.json()

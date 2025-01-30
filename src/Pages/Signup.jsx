@@ -53,7 +53,7 @@ const Signup = () => {
     
         try {
             // Make the POST request to the backend API
-            const response = await fetch("http://localhost:5000/api/auth/register", {
+            const response = await fetch("https://vancamp-backend.onrender.com/api/auth/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json", // Set content type to JSON

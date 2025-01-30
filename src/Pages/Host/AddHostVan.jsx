@@ -93,7 +93,7 @@ const AddHostVan = () => {
         }
         
         try {
-            const response = await fetch('http://localhost:5000/api/vans/create', {
+            const response = await fetch('https://vancamp-backend.onrender.com/api/vans/create', {
                 method: 'POST',
                 body: formData,
             });
