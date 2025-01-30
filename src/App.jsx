@@ -19,7 +19,6 @@ import HostVanDetailsInfo from './Pages/Host/HostVanDetailsInfo';
 import HostVanDetailsPhotos from './Pages/Host/HostVanDetailsPhotos';
 import HostVanDetailsPrice from './Pages/Host/HostVanDetailsPrice';
 import Booking from './Pages/Booking';
-import Logout from './Pages/Logout';
 
 
 function App() {
@@ -44,7 +43,6 @@ function App() {
             <Route path='reviews' element={<Reviews />} />
           </Route>
           <Route path='login' element={<Login />} />
-          <Route path='logout' element={<Logout />} />
           <Route path='signup' element={<Signup />} />
           <Route path='booking/:id' element={<Booking />} />
         </Route>

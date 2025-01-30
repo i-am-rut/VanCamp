@@ -10,7 +10,6 @@ const Header = () => {
     <header>
       <Link to="/" className='site-logo' >#VanCamp</Link>
       <nav>
-        <Link to='/logout'>Logout <MdOutlineLogout /></Link>
         <NavLink
           to="host"
           className={({ isActive }) => isActive ? "selected" : ""}
