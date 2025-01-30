@@ -25,7 +25,7 @@ const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            await axios.post("http://localhost:5000/api/auth/login", {email, password}, {withCredentials: true})
+            await axios.post("http://localhost:5000/api/auth/login", {email, password}, {withCredentials: true}, {headers : {'Content-Type': 'application/x-www-form-urlencoded'}})
             checkLogin()
         } catch (error) {
             throw new Error(error.response?.data?.error || "Login failed")
