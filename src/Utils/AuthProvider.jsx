@@ -16,7 +16,6 @@ const AuthProvider = ({ children }) => {
             const res = await axios.get("https://vancamp-backend.onrender.com/api/auth/me", { withCredentials: true });
             setUser(res.data.user);
         } catch (error) {
-            console.error("Auth check failed:", error.response?.data || error.message);
             setUser(null);
         } finally {
             setIsLoading(false);
@@ -33,12 +32,9 @@ const AuthProvider = ({ children }) => {
     }
 
     const logout = async () => {
-        try {
             await axios.post("https://vancamp-backend.onrender.com/api/auth/logout", {}, {withCredentials: true})
             setUser(null)
-        } catch (error) {
-            console.error("Logout failed:", error.response?.data?.message || error.message)
-        }
+        
     }
 
     return (
