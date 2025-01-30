@@ -6,14 +6,14 @@ const Vans = () => {
   const [searchParams, setSearchparams] = useSearchParams()
 
   const categoryFilter = searchParams.get("category")
-  
-  
 
-  const getVans = async() => {
-    try{
-      const response = await fetch("http://localhost:5000/api/vans",{method: "GET"})
 
-      if(response.ok) {
+
+  const getVans = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/vans", { method: "GET" })
+
+      if (response.ok) {
         const data = await response.json()
         setVans(data)
       } else {
@@ -32,7 +32,7 @@ const Vans = () => {
   const vanElements = vans.map(van => (
     <div key={van._id} className='van-card-container'>
       <Link to={`/vans/${van._id}`}>
-        <img src={van.images[0]} className='van-card-img' alt={`${van.name} van`}/>
+        <img src={van.images[0]} className='van-card-img' alt={`${van.name} van`} />
         <div className='van-card-info'>
           <h2>{van.name}</h2>
           <p><span>&#8377;{van.basePrice}</span>/day</p>
@@ -43,26 +43,27 @@ const Vans = () => {
   ))
 
   const vanCategories = [...new Set(vans.map(van => van.category))]
-  const categoryFilterButtons = vanCategories.map(category => 
-    <div key={category} className='filter-buttons-container'>
-      <button 
-        className={`van-type ${categoryFilter === category && category} filter-button`}
-        onClick={() => setSearchparams({category: category})}
-      >{category}</button>
-    </div>
+  const categoryFilterButtons = vanCategories.map(category =>
+    <button
+      key={category}
+      className={`van-type ${categoryFilter === category && category} type-filter-button`}
+      onClick={() => setSearchparams({ category: category })}
+    >{category}</button>
   )
 
   return (
     <div className='vans-list-container'>
       <h1>Explore our van options</h1>
-      {categoryFilterButtons}
-      {categoryFilter && 
-        <button 
-          className='van-type filter-button'
-          onClick={() => setSearchparams({})}
-        >Clear filter</button>}
+      <div className='filter-buttons-container'>
+        {categoryFilterButtons}
+        {categoryFilter &&
+          <button
+            className='van-type type-filter-button'
+            onClick={() => setSearchparams({})}
+          >Clear filter</button>}
+      </div>
       <div className='vans-list filter-button'>
-        {vans.length > 0? vanElements: <h1>Loading...</h1>}
+        {vans.length > 0 ? vanElements : <h1>Loading...</h1>}
       </div>
     </div>
   )

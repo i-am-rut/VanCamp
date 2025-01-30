@@ -1,19 +1,28 @@
-import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import Menu from './Menu/index'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { CgProfile } from 'react-icons/cg'
 import { MdOutlineLogout } from "react-icons/md";
+import  { AuthContext } from '../Utils/AuthProvider'
 
 const Header = () => {
+  const { user, logout } = useContext(AuthContext)
+  const navigate = useNavigate()
+
+  const handleLogout = async () => {
+    await logout()
+    navigate('/login')
+  }
+
   return (
     <header>
       <Link to="/" className='site-logo' >#VanCamp</Link>
       <nav>
-        <NavLink
+        {user?.role === 'host' && <NavLink
           to="host"
           className={({ isActive }) => isActive ? "selected" : ""}
-        >Host</NavLink>
+        >Host</NavLink>}
         <NavLink
           to="about"
           className={({ isActive }) => isActive ? "selected" : ""}
@@ -22,7 +31,13 @@ const Header = () => {
           to="vans"
           className={({ isActive }) => isActive ? "selected" : ""}
         >Vans</NavLink>
-        <Link to='login'><CgProfile /></Link>
+        {user ? ( 
+          <button className='logout-button'  onClick={handleLogout}>
+              logout <MdOutlineLogout />
+          </button> 
+        ) : (
+          <Link to='login'><CgProfile /></Link>
+        )}
         <Menu>
           <Menu.Button><GiHamburgerMenu /></Menu.Button>
           <Menu.Dropdown>

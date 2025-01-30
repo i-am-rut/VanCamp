@@ -115,6 +115,7 @@ const Signup = () => {
                 type='email' 
                 placeholder='Email address' 
                 required
+                autoComplete='off'
                 onChange={handleInputChange}
             />
             <label htmlFor='reg-password'>Enter password:</label>
@@ -127,6 +128,7 @@ const Signup = () => {
                     value={regData.password}
                     type={passwordVisible.password?  "text" : "password"}  
                     placeholder='Password'
+                    autoComplete='off'
                     onChange={handleInputChange}
                 />
                 <button onClick={(e) => {e.preventDefault(); handleEyeClick('password')}}><FaEye /></button>
@@ -141,6 +143,7 @@ const Signup = () => {
                     value={regData.rePassword}
                     type={passwordVisible.repassword? "password" : "text"} 
                     placeholder='Re-enter password'
+                    autoComplete='off'
                     onChange={handleInputChange}
                 />
                 <button onClick={(e) => {e.preventDefault(); handleEyeClick('repassword')}}><FaEye /></button>

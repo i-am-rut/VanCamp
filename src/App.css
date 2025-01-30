@@ -57,6 +57,7 @@ header {
 nav {
     display: flex;
     gap: 1.25rem;
+    align-items: center;
 }
 
 nav > a {
@@ -78,6 +79,26 @@ nav > a > svg {
     font-size: 1.25rem;
     font-weight: bold;
     color: #161616;
+}
+
+.logout-button {
+    background-color: transparent;
+    border: 0.125rem solid #4D4D4D;
+    border-radius: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.3rem 0.8rem;
+    cursor: pointer;
+    transition: transform ease-in-out;
+}
+
+.logout-button:active {
+    transform: translate(0.075rem, 0.075rem);
+}
+
+.logout-button > svg {
+    font-weight: bold;
 }
 
 .menu-container {
@@ -141,6 +162,17 @@ nav > a > svg {
     align-items: center;
 }
 
+.login-err-msg-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.login-err-msg {
+    color: red;
+    
+}
+
 .sign-in-button {
     width: 100%;
     padding: 0.6rem 1rem;
@@ -154,11 +186,16 @@ nav > a > svg {
     margin-bottom: 2rem;
     font-family: 'Inter', sans-serif;
     cursor: pointer;
+    transition: transform ease-in-out;
 }
 
 .sign-in-button:disabled {
     cursor: not-allowed;
     opacity: 0.6;
+}
+
+.sign-in-button:active {
+    transform: translate(0.075rem, 0.075rem);
 }
 
 .login-page-signup-link-container{
@@ -362,6 +399,19 @@ nav > a > svg {
 
 .vans-list-container {
     padding: 0 1.5rem;
+}
+
+.filter-buttons-container {
+    width: 70%;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.type-filter-button {
+    background-color: #f68360;
+    border: none;
+    cursor: pointer;
 }
 
 .vans-list {
