@@ -4,8 +4,6 @@ import { useOutletContext } from 'react-router-dom'
 const HostVanDetailsPrice = () => {
 
   const hostVan = useOutletContext()
-  console.log(hostVan)
-
 
   return (
     <h3>

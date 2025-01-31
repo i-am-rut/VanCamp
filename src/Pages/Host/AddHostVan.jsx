@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AddHostVan = () => {
     const [van, setVan] = useState({
@@ -15,6 +16,7 @@ const AddHostVan = () => {
     const [imagePreviews, setImagePreviews] = useState([]);
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [loading, setLoading] = useState(false)
+    const navigate = useNavigate()
 
     
     
@@ -104,7 +106,10 @@ const AddHostVan = () => {
             }
             
             const data = await response.json();
-            console.log('Van added successfully:', data);
+            setMessage(`${data.name}an added successfully`);
+            setTimeout(() => {
+                navigate('/host/vans')
+            })
             
         } catch (error) {
             console.error('Error adding van:', error);
@@ -126,7 +131,6 @@ const AddHostVan = () => {
         }
 
     };
-    console.log(van)
     
     return (
         <div 
