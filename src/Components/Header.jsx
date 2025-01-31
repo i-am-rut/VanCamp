@@ -14,7 +14,7 @@ const Header = () => {
     await logout()
     navigate('/login')
   }
-
+  
   return (
     <header>
       <Link to="/" className='site-logo' >#VanCamp</Link>
