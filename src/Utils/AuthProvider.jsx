@@ -16,12 +16,8 @@ const AuthProvider = ({ children }) => {
     }
 
     const logout = async () => {
-        try {
-            await axios.post("https://vancamp-backend.onrender.com/api/auth/logout", {}, {withCredentials: true})
-            setUser(null)
-        } catch (error) {
-            console.error("Logout failed:", error.response?.data?.message || error.message)
-        }
+        await axios.post("https://vancamp-backend.onrender.com/api/auth/logout", {}, {withCredentials: true})
+        setUser(null)
     }
 
     return (
