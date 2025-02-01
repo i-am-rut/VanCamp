@@ -26,7 +26,7 @@ const VanDetails = () => {
       }
     }
     getVan()
-  }, [param.id])
+  }, [param.vanId])
 
 
   return (

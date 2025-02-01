@@ -15,7 +15,7 @@ const Booking = () => {
         renterContact: ''
     })
     const bookingInfo = {
-        vanId: param.id,
+        vanId: param.vanId,
         fromDate: availability.fromDate,
         tillDate: availability.tillDate,
         renterContact: availability.renterContact,
@@ -32,7 +32,7 @@ const Booking = () => {
     useEffect(() => {
         const getVan = async () => {
             try {
-                const response = await fetch(`https://vancamp-backend.onrender.com/api/vans/${param.id}`, { method: "GET" })
+                const response = await fetch(`https://vancamp-backend.onrender.com/api/vans/${param.vanId}`, { method: "GET" })
 
                 if (response.ok) {
                     const data = await response.json()
@@ -48,18 +48,19 @@ const Booking = () => {
             }
         }
         getVan()
-    }, [param.id])
+    }, [param.vanId])
     useEffect(() => {
         if (!availability.renterContact || availability.renterContact.length < 10) {
             setDone(false)
         }
         setDone(true)
     }, [availability])
+    
 
     const handleCheckAvailability = async (e) => {
         e.preventDefault()
         try {
-            const res = await axios.get(`https://vancamp-backend.onrender.com/api/bookings/availability/${param.id}?fromDate=${availability.fromDate}&tillDate=${availability.tillDate}`)
+            const res = await axios.get(`https://vancamp-backend.onrender.com/api/bookings/availability/${param.vanId}?fromDate=${availability.fromDate}&tillDate=${availability.tillDate}`)
             if (res.data.available === true) {
                 setMessage(`This van is available for booking between ${dateConverter(availability.fromDate)} and ${dateConverter(availability.tillDate)} preceed to book the van below`)
                 setDone(false)

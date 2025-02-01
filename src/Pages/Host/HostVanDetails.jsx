@@ -12,10 +12,10 @@ const HostVanDetails = () => {
     };
     
     useEffect(() => {
-        fetch(`/api/host/vans/${param.id}`)
+        fetch(`/api/host/vans/${param.vanId}`)
             .then(res => res.json())
             .then(data => setHostVan(data.vans[0]))
-    }, [param.id])
+    }, [param.vanId])
 
 
   return (
