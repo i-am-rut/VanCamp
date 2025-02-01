@@ -97,10 +97,12 @@ const AddHostVan = () => {
         }
         
         try {
-            const response = await fetch('https://vancamp-backend.onrender.com/api/vans/create', {
-                method: 'POST',
-                body: formData,
-            });
+            const response = await axios.post(
+                'https://vancamp-backend.onrender.com/api/vans/create', formData, { withCredentials: true, headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                }
+            )
             
             if (!response.ok) {
                 const errorData = await response.json();
