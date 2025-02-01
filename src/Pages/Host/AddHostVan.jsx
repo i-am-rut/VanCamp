@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Utils/AuthProvider';
 
 const AddHostVan = () => {
+    const { user } = useContext(AuthContext)
     const [van, setVan] = useState({
         name: '',
         description: '',
@@ -9,7 +11,7 @@ const AddHostVan = () => {
         location: '',
         category: '',
         images: [],
-        hostId: '',
+        hostId: user._id,
     });
     const [done, setDone] = useState(false);
     const [message, setMessage] = useState('');
@@ -145,6 +147,7 @@ const AddHostVan = () => {
                     value={van.hostId}
                     onChange={handleFormInput}
                     placeholder="HostId"
+                    disabled
                 />
                 <label htmlFor='add-van-name'>Van name:</label>
                 <input

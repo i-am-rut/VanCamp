@@ -19,9 +19,19 @@ header {
     box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.6);
 }
 
-/* .disclaimer {
-    display: block;
-} */
+button {
+    cursor: pointer;
+    transition: transform .1s ease-in-out;
+}
+
+button:active {
+    transform: translate(0.075rem 0.075rem);
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
 
 .link-button {
     display: inline-block;
@@ -563,6 +573,9 @@ nav > a > svg {
 .van-booking-container {
     max-width: 40rem;
     min-width: 20rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
     border: 0.25rem solid #AAAAAA;
     border-radius: 0.5rem;
     padding: 1rem;
@@ -570,7 +583,6 @@ nav > a > svg {
 
 .van-preview-card-container {
     width: 100%;
-    margin-bottom: 2rem;
 }
 
 .van-preview-card {
@@ -594,15 +606,20 @@ nav > a > svg {
 }
 
 .booking-form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
     gap: 1.5rem;
     width: 100%;
     padding: 1rem 1.5rem;
     background-color: #FFFFFF;
     border-radius: 0.5rem;
     box-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.6);
-    margin-bottom: 2rem;
+}
+
+.booking-form-title {
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 1.2rem;
 }
 
 .from-date-container, .till-date-container, .contact-number-container {
@@ -616,17 +633,45 @@ nav > a > svg {
     border-radius: 0.4rem;
 }
 
-.contact-number-container {
-    grid-column-start: 1;
-    grid-column-end: 3;
+.booking-check-availability-button {
+    padding: 0.6rem 1rem;
+    background-color: #161616;
+    color: #FFFFFF;
+    font-weight: bold;
+    border-radius: 0.4rem;
+    transition: transform ease-in-out;
+    cursor: pointer;
+    letter-spacing: 0.075rem;
+}
+
+.booking-check-availability-button:active {
+    transform: translate(0.075rem, 0.075rem);
+}
+
+.booking-check-availability-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
 }
 
 .booking-error-message {
     color: red;
     padding: 1rem 1.5rem;
+    margin: 0;
     background-color: #FFFFFF;
     border-radius: 0.rem;
     box-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.6);
+    border-radius: 0.4rem;
+}
+
+.book-van-button {
+    padding: 0.6rem 1rem;
+    color: #FFFFFF;
+    background-color: #E17654;
+    font-weight: bold;
+    border-radius: 0.4rem;
+    letter-spacing: 0.075rem;
+    font-size: 1rem;
+    border: none;
 }
 
 

@@ -19,6 +19,7 @@ import HostVanDetailsInfo from './Pages/Host/HostVanDetailsInfo';
 import HostVanDetailsPhotos from './Pages/Host/HostVanDetailsPhotos';
 import HostVanDetailsPrice from './Pages/Host/HostVanDetailsPrice';
 import Booking from './Pages/Booking';
+import MyBookings from './Pages/MyBookings';
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
           <Route path='login' element={<Login />} />
           <Route path='signup' element={<Signup />} />
           <Route path='booking/:id' element={<Booking />} />
+          <Route path='my-bookings' element={<MyBookings />} />
         </Route>
       </Routes>
     </BrowserRouter>
