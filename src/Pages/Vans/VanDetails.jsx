@@ -12,7 +12,7 @@ const VanDetails = () => {
   useEffect(() => {
     const getVan = async () => {
       try {
-        const response = await fetch(`https://vancamp-backend.onrender.com/api/vans/${param.vanId}`, { method: "GET" })
+        const response = await fetch(`https://vancamp-backend.onrender.com/api/vans/${param.id}`, { method: "GET" })
 
         if (response.ok) {
           const data = await response.json()
@@ -26,7 +26,7 @@ const VanDetails = () => {
       }
     }
     getVan()
-  }, [param.vanId])
+  }, [param.id])
 
 
   return (
