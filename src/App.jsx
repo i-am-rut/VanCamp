@@ -45,7 +45,7 @@ function App() {
           </Route>
           <Route path='login' element={<Login />} />
           <Route path='signup' element={<Signup />} />
-          <Route path='booking/:id' element={<Booking />} />
+          <Route path='booking/:vanId' element={<Booking />} />
           <Route path='my-bookings' element={<MyBookings />} />
         </Route>
       </Routes>
