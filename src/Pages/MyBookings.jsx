@@ -9,7 +9,7 @@ const MyBookings = () => {
     
     const getUserBookings = async () => {
         try {
-            const res = await axios.get('https://vancamp-backend.onrender.com/api/bookings/renter')
+            const res = await axios.get('https://vancamp-backend.onrender.com/api/bookings/renter', {withCredentials: true})
             if (res.message === "No available bookings") {
                 setBookings([])
             }

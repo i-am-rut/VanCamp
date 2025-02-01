@@ -83,7 +83,7 @@ const Booking = () => {
                 endDate: tillDate,
                 renterContact,
                 addOns: []
-            })
+            }, {withCredentials: true})
             setMessage(`${res.message} Redirecting to your bookings in 3 seconds.`)
             setTimeout(() => {
                 navigate('/my-bookings')
