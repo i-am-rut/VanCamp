@@ -111,7 +111,7 @@ const Signup = () => {
             <input 
                 id='reg-email'
                 name='email'
-                value={regData.email}
+                value={regData.email.toLowerCase()}
                 type='email' 
                 placeholder='Email address' 
                 required
