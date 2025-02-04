@@ -1,5 +1,7 @@
 import axios from 'axios'
 import React, {useEffect, useState} from 'react'
+import { loadScript } from '../Utils/LoadScript'
+import logo192 from '../Utils/logo192.png'
 
 const MyBookings = () => {
     const [bookings, setBookings] = useState([])
@@ -10,8 +12,71 @@ const MyBookings = () => {
         return newDate
     }
 
+    const handlePayClick = async (bookingId) => {
+        try {
+          
+          const { data } = await axios.post("https://vancamp-backend.onrender.com/api/transactions/create-order", { bookingId }, {withCredentials: true});
+      
+          if (!data.order) {
+            alert("Error creating order. Please try again.");
+            return;
+          }
+      
+          //Load Razorpay script
+          const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
+          if (!res) {
+            alert("Failed to load Razorpay. Check your connection.");
+            return;
+          }
+      
+          //Configure Razorpay Checkout
+          const options = {
+            key: process.env.REACT_APP_RAZORPAY_KEY_ID, 
+            amount: data.order.amount, 
+            currency: "INR",
+            name: "VanCamp",
+            description: "Booking Payment",
+            image: logo192,
+            order_id: data.order.id,
+            handler: async function (response) {
+              try {
+                // Verify payment with backend
+                const verifyRes = await axios.post("https://vancamp-backend.onrender.com/api/transactions/verify-payment", {
+                  bookingId,
+                  razorpayPaymentId: response.razorpay_payment_id,
+                  razorpayOrderId: response.razorpay_order_id,
+                  razorpaySignature: response.razorpay_signature
+                }, {withCredentials: true});
+                console.log(verifyRes)
+                alert("Payment Successful!");
+                window.location.reload(); // Refresh UI after successful payment
+              } catch (err) {
+                console.error("Payment verification failed:", err);
+                alert("Payment verification failed. Please contact support.");
+              }
+            },
+            prefill: {
+              name: data.renterContact.name,
+              email: data.renterContact.email,
+              contact: data.renterContact.phone
+            },
+            theme: {
+              color: "#3399cc"
+            }
+          };
+      
+          // Open Razorpay checkout modal
+          const rzp = new window.Razorpay(options);
+          rzp.open();
+      
+        } catch (error) {
+          console.error("Error in payment:", error);
+          alert("Payment failed. Please try again.");
+        }
+    }
+
     const vanCard = displayArray.map(booking => (
-        <div className='my-bookings-card'>
+        <div key={booking._id} className='my-bookings-card'>
             <div className='my-bookings-card-van-preview'>
                 <img className='my-bookings-card-image' src={booking.vanId.images[0]} alt={`${booking.vanId.name} van`} />
                 <div className='my-bookings-card-info-container'>
@@ -24,7 +89,7 @@ const MyBookings = () => {
             <div className='my-bookings-card-status-and-actions-container'>
                 <p><strong>Status:</strong> {booking.status}</p>
                 <div className='my-bookings-card-buttons-container'>
-                    <button className={`pay-button ${booking.status === 'Cancelled' && 'display-none'} `}>Pay Amount</button>
+                    <button className={`pay-button ${booking.status === 'Cancelled' && 'display-none'} `} onClick={() => handlePayClick(booking._id)}>Pay Amount</button>
                     <button className={`cancel-booking-button ${booking.status === 'Cancelled' && 'display-none'} `}>Cancel booking</button>
                 </div>
             </div>
