@@ -168,6 +168,34 @@ nav > a > svg {
     color: #161616;
 }
 
+/* Profile Page -----------------------------------------------------*/
+
+.profile-page-container {
+    padding: 1rem 1.5rem;
+}
+
+.profile-container {
+    padding: 1rem 1rem;
+    border: 0.125rem solid #4D4D4D;
+    border-radius: 0.4rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.6);
+}
+
+.edit-profile-button {
+    padding: 0.6rem 1rem;
+    border-radius: 0.4rem;
+    background-color: #161616;
+    color: #FFFFFF;
+    font-weight: bold;
+    transition: transform ease-in-out;
+}
+
+.edit-profile-button:active {
+    transform: translate( 0.075rem, 0.075rem);
+}
+
+
+
 
 /* Login Page -----------------------------------------------------*/
 

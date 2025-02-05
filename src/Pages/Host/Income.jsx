@@ -14,7 +14,7 @@ const Income = () => {
     const fetchEarnings = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`http://localhost:5000/api/host/earnings?filter=${filter}`, { credentials: "include" });
+        const res = await fetch(`https://vancamp-backend.onrender.com/api/host/earnings?filter=${filter}`, { credentials: "include" });
         const data = await res.json();
 
         if (!res.ok) throw new Error(data.message || "Failed to fetch earnings");

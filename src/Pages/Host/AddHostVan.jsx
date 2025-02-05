@@ -13,6 +13,7 @@ const AddHostVan = () => {
         category: '',
         images: [],
         hostId: user._id,
+        hostName: user.name,
     });
     const [done, setDone] = useState(false);
     const [message, setMessage] = useState('');
@@ -25,8 +26,8 @@ const AddHostVan = () => {
     
     useEffect(() => {
         const validateForm = () => {
-            const { name, description, basePrice, location, category, hostId, images } = van;
-            if (name && description && basePrice && location && category && hostId && images.length > 0) {
+            const { name, description, basePrice, location, category, hostId, hostName, images } = van;
+            if (name && description && basePrice && location && category && hostId && hostName && images.length > 0) {
                 setDone(true);
             } else {
                 setDone(false);
@@ -86,6 +87,7 @@ const AddHostVan = () => {
         // Create FormData to send the data along with images
         const formData = new FormData();
         formData.append('hostId', van.hostId);
+        formData.append('hostName', van.hostName);
         formData.append('name', van.name);
         formData.append('description', van.description);
         formData.append('basePrice', van.basePrice);
@@ -128,7 +130,8 @@ const AddHostVan = () => {
                 location: '',
                 category: '',
                 images: [],
-                hostId: '',
+                hostId: user._id,
+                hostName: user.name,
             })
             setImagePreviews([])
             setIsSubmitting(false)
@@ -150,6 +153,15 @@ const AddHostVan = () => {
                     value={van.hostId}
                     onChange={handleFormInput}
                     placeholder="HostId"
+                    disabled
+                />
+                <label htmlFor='add-van-host-name'>Host name:</label>
+                <input
+                    id="add-van-host-name"
+                    name="hostName"
+                    value={van.hostName}
+                    onChange={handleFormInput}
+                    placeholder="Host Name"
                     disabled
                 />
                 <label htmlFor='add-van-name'>Van name:</label>

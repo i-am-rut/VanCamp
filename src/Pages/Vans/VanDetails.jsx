@@ -39,6 +39,7 @@ const VanDetails = () => {
           <h1>{van.name}</h1>
           <p><span className='van-price'>&#8377;{van.basePrice}</span>/day</p>
           <p><strong>City: </strong>{van.location}</p>
+          <p><strong>Host: </strong>{van.hostName? van.hostName : van.hostId}</p>
           <p className='van-description'>{van.description}</p>
           {van.insuranceDetails && <p><strong>Insurance: </strong> {van.insuranceDetails}</p>}
           <button
