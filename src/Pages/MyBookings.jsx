@@ -1,10 +1,12 @@
 import axios from 'axios'
 import React, {useEffect, useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 import { loadScript } from '../Utils/LoadScript'
 import logo192 from '../Utils/logo192.png'
 
 const MyBookings = () => {
     const [bookings, setBookings] = useState([])
+    const navigate = useNavigate()
     const displayArray = bookings.reverse()
     const dateFormat = (str) => {
         const date = str.split('T')[0].split('-')
@@ -50,6 +52,7 @@ const MyBookings = () => {
                 console.log(verifyRes)
                 alert("Payment Successful!");
                 window.location.reload(); // Refresh UI after successful payment
+                navigate('/my-bookings/:id')
               } catch (err) {
                 console.error("Payment verification failed:", err);
                 alert("Payment verification failed. Please contact support.");
@@ -113,7 +116,7 @@ const MyBookings = () => {
         getUserBookings()
     }, [])
 
-    // console.log("Display array ==>", displayArray)
+
   return (
     <div className='my-bookings-page-container'>
       <div className='my-bookings-container'>

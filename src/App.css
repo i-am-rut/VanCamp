@@ -96,7 +96,9 @@ nav > a > svg {
 }
 
 .logout-button {
-    background-color: transparent;
+    background-color: #E17654;
+    color: #FFFFFF;
+    font-weight: 700;
     border: 0.125rem solid #4D4D4D;
     border-radius: 0.4rem;
     display: flex;
@@ -115,8 +117,55 @@ nav > a > svg {
     font-weight: bold;
 }
 
-.menu-container {
-    display: none;
+.menu-button {
+    padding: 0.4rem 0.6rem;
+    border: 0.125rem solid #4D4D4D;
+    border-radius: 0.4rem;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: transform ease-in-out;
+    box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.6);
+    position: relative;
+}
+
+.menu-button:active {
+    transform: translate(0.075rem, 0.075rem);
+}
+
+.menu-dropdown {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+    padding-bottom: 01rem;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 0.4rem;
+    background-color: white;
+    border: 0.125rem solid #4D4D4D;
+    position: absolute;
+    right: 1rem;
+    top: 5rem;
+}
+
+.menu-dropdown > button {
+    align-self: center;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.125rem solid #4D4D4D;
+}
+
+.menu-item > a {
+    padding-bottom: 0.5rem;
+    text-decoration: none;
+    color: #161616;
 }
 
 

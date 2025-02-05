@@ -1,8 +1,8 @@
 import React from 'react'
 
-const MenuButton = ({children}) => {
+const MenuButton = ({children, onClick}) => {
   return (
-    <div className='menu-button'>
+    <div className='menu-button' onClick={onClick}>
       {children}
     </div>
   )

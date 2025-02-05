@@ -5,6 +5,7 @@ import Login from './Pages/Login';
 import Home from './Pages/Home';
 import About from './Pages/About';
 import Vans from './Pages/Vans/Vans';
+import Profile from './Pages/Profile';
 import "./server"
 import VanDetails from './Pages/Vans/VanDetails';
 import Layout from './Components/Layout'
@@ -47,6 +48,7 @@ function App() {
           <Route path='signup' element={<Signup />} />
           <Route path='booking/:vanId' element={<Booking />} />
           <Route path='my-bookings' element={<MyBookings />} />
+          <Route path='profile' element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>
