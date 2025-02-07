@@ -787,6 +787,11 @@ nav > a > svg {
     border: 0.125rem solid #E17654;
 }
 
+.my-bookings-card > a {
+    text-decoration: none;
+    color: #161616;
+}
+
 .my-bookings-card-van-preview {
     display: flex;
     align-items: center;
@@ -841,7 +846,18 @@ nav > a > svg {
 }
 
 
+.my-bookings-page-no-booking-yet-banner-container {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.my-bookings-page-no-booking-yet-banner-container > .svg-container > svg {
+    font-size: 15rem;
+    color: #f68360;
+}
 
 
 
