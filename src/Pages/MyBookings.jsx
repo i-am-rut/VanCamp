@@ -14,7 +14,23 @@ const MyBookings = () => {
         const date = str.split('T')[0].split('-')
         const newDate = `${date[2]}-${date[1]}-${date[0]}`
         return newDate
-      }
+    }
+
+      const getUserBookings = async () => {
+        try {
+            const res = await axios.get('https://vancamp-backend.onrender.com/api/bookings/mybookings', {withCredentials: true})
+            if (res.message === "No available bookings") {
+                setBookings([])
+            }
+            setBookings(res.data)
+        } catch (error) {
+            console.log("Get user bookings error:", error.message)
+        }
+    }
+
+    useEffect(() => {
+        getUserBookings()
+    }, [])
     
 
     const handlePayClick = async (bookingId) => {
@@ -81,19 +97,6 @@ const MyBookings = () => {
         }
     }
 
-    // const handleCancelClick = async (bookingId) => {
-    //   try {
-    //     const response = await axios.patch(`http://localhost:5000/api/bookings/cancel/${bookingId}`);
-        
-    //     console.log("Booking canceled successfully:", response.data);
-    //     return response.data;
-    //   } catch (error) {
-    //     console.error("Error canceling booking:", error.response?.data || error.message);
-    //     throw error;
-    //   }
-    // }
-    // {(booking.status === 'Confirmed' || booking.status === 'Pending') && <button className='cancel-booking-button'
-    //   onClick={handleCancelClick}>Cancel booking</button>}
 
     const vanCard = displayArray.length > 0? displayArray.map(booking => (
         <div key={booking._id} className='my-bookings-card'>
@@ -117,26 +120,6 @@ const MyBookings = () => {
       <div className='svg-container'><GiSurferVan /></div>
       <h1>You have no prior bookings.</h1>
     </div>
-
-
-
-    
-    
-    const getUserBookings = async () => {
-        try {
-            const res = await axios.get('https://vancamp-backend.onrender.com/mybookings', {withCredentials: true})
-            if (res.message === "No available bookings") {
-                setBookings([])
-            }
-            setBookings(res.data)
-        } catch (error) {
-            console.log("Get user bookings error:", error.message)
-        }
-    }
-
-    useEffect(() => {
-        getUserBookings()
-    }, [])
 
 
   return (

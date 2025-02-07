@@ -21,6 +21,7 @@ import HostVanDetailsPhotos from './Pages/Host/HostVanDetailsPhotos';
 import HostVanDetailsPrice from './Pages/Host/HostVanDetailsPrice';
 import Booking from './Pages/Booking';
 import MyBookings from './Pages/MyBookings';
+import MyBookingDetails from './Pages/MyBookingDetails';
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
           <Route path='signup' element={<Signup />} />
           <Route path='booking/:vanId' element={<Booking />} />
           <Route path='my-bookings' element={<MyBookings />} />
+          <Route path='my-bookings/:bookingId' element={<MyBookingDetails />} />
           <Route path='profile' element={<Profile />} />
         </Route>
       </Routes>
