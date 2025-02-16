@@ -860,6 +860,69 @@ nav > a > svg {
 }
 
 
+/* Booking Details Section -----------------------------------------------------*/
+
+.booking-details-page-container {
+    margin: 1.5rem;
+}
+
+.booking-details-page {
+    padding: 1rem;
+    background-color: #FFFFFF;
+    max-width: 40rem;
+    border-radius: 0.4rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.6);
+}
+
+.booking-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.booking-details-van-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 0.125rem solid #161616;
+}
+
+.van-info > p {
+    margin-bottom: 0;
+}
+
+.booking-details-image-container {
+    width: 30%;
+    max-width: 10rem;
+}
+
+.booking-details-image-container > img {
+    width: 100%;
+    display: block;
+    border-radius: 0.4rem;
+}
+
+.booking-details-booking-info-container {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.booking-info-formatter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.booking-info-description-formatter {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-line {
+    border-bottom: 0.125rem solid #d6d6d6;
+}
+
+
 
 /* Host Section -----------------------------------------------------*/
 

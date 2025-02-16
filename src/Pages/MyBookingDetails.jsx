@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { loadScript } from '../Utils/LoadScript';
 import logo192 from '../Utils/logo192.png'
+import { ShimmerContentBlock } from 'react-shimmer-effects';
 
 const MyBookingDetails = () => {
     const [booking, setBooking] = useState({
@@ -54,7 +55,8 @@ const MyBookingDetails = () => {
         createdAt: "2025-02-01T09:28:42.968Z",
         updatedAt: "2025-02-01T09:28:42.968Z",
         __v: 0
-      })
+    })
+    const [loading, setLoading] = useState(true)
     const param = useParams()
     const navigate = useNavigate()
     const dateFormat = (str) => {
@@ -67,19 +69,23 @@ const MyBookingDetails = () => {
 
         const getBooking = async () => {
             try {
-                const res = await axios.get(`https://vancamp-backend.onrender.com/api/bookings/${param.bookingId}`)
+                setLoading(true)
+                const res = await axios.get(`https://vancamp-backend.onrender.com/api/bookings/${param.bookingId}`, {withCredentials: true})
 
-                if(res.ok) {
-                    setBooking(res.data)
+                if(res.status === 200) {
+                  setBooking(res.data)
+                } else {
+                  console.log("This:",res)
                 }
             } catch (error) {
                 console.log("error is:", error)
+            } finally {
+              setLoading(false)
             }
 
         }
         getBooking()
     },[param.bookingId])
-
 
     const handlePayClick = async (bookingId) => {
         try {
@@ -159,30 +165,56 @@ const MyBookingDetails = () => {
     
     return (
         <div className='booking-details-page-container'>
-            <div className='booking-details-page'>
-                <div className='booking-details'>
-                    <div className='temp'>
-                        <img src='https://res.cloudinary.com/dyjphgkf9/image/upload/v1738081756/vancamp/vfiovjj9lhb6gvceom2d.png' alt={`${booking.vanId.name} van`} style={{width: "15rem"}} />
-                        <div>
-                            <p><strong>Name: </strong>{booking.vanId.name}</p>
-                            <p><strong>Price per day: </strong>{booking.vanId.basePrice}</p>
-                            <p><strong>Status: </strong>{booking.status}</p>
-                            <p><strong>From Date: </strong>{dateFormat(booking.startDate)}</p>
-                            <p><strong>Till Date: </strong>{dateFormat(booking.endDate)}</p>
-                            <p><strong>Base price: </strong>{booking.price.basePrice}</p>
-                            <p>(price per day * number of days)</p>
-                            <p><strong>Addons: </strong>{booking.price.addOnsPrice}</p>
-                            <p><strong>Total price: </strong>{booking.price.totalPrice}</p>
-                            <p>(base price + addons)</p>
-                        </div>
-                    </div>
-                        <div className='my-bookings-card-buttons-container'>
-                        {booking.status === 'Pending' && <button className='pay-button' onClick={() => handlePayClick(booking._id)}>Pay Amount</button>}
-                        {(booking.status === 'Confirmed' || booking.status === 'Pending') && <button className='cancel-booking-button'
-                        onClick={handleCancelClick}>Cancel booking</button>}
-                    </div>
+          <div className='my-bookings-note-section'>
+            <p><strong>NOTES:</strong><br />1. You can make <strong>payment</strong> till <strong>1 day before your booking start date.</strong> If you fail to do so, the <strong>booking</strong> will be automatically <strong>cancelled.</strong> <br /><br /> 2. You can <strong>cancel your bookings</strong> only <strong>till the booking start date</strong> after that bookings will not be canceled.</p>
+          </div>
+          <div className='booking-details-page'>
+            <div className='booking-details'>
+              {loading? <ShimmerContentBlock title text cta thumbnailWidth={100} thumbnailHeight={100} /> : <div className='booking-details-van-info'>
+                <div className='booking-details-image-container'>
+                  <img src={booking.vanId.images[0]} alt={`${booking.vanId.name} van`} />
                 </div>
+                <div className='van-info'>
+                  <p><strong>Name: </strong>{booking.vanId.name}</p>
+                  <p><strong>Price per day: </strong>&#8377;{booking.vanId.basePrice}</p>
+                  <p><strong>Status: </strong>{booking.status}</p>
+                </div>
+              </div>}
+              <div className='booking-details-booking-info-container'>
+                <div className='booking-info-formatter'>
+                  <strong>From Date: </strong>
+                  <p>{dateFormat(booking.startDate)}</p>
+                </div>
+                <div className='booking-info-formatter'>
+                  <strong>Till Date: </strong>
+                  <p>{dateFormat(booking.endDate)}</p>
+                </div>
+                <div className='booking-info-formatter'>
+                  <div className='booking-info-description-formatter'>
+                    <strong>Base price: </strong>
+                    <small>(price per day * number of days)</small>
+                  </div>
+                  <p>&#8377;{booking.price.basePrice}</p>
+                </div>
+                <div className='booking-info-formatter bottom-line'>
+                  <strong>Addons: </strong>
+                  <p>&#8377;{booking.price.addOnsPrice}</p>
+                </div>
+                <div className='booking-info-formatter'>
+                  <div className='booking-info-description-formatter'>
+                  <strong>Total price: </strong>
+                  <small>(base price + addons)</small>
+                  </div>
+                  <p>&#8377;{booking.price.totalPrice}</p>
+                </div>
+              </div>
+              <div className='my-bookings-card-buttons-container'>
+                {booking.status === 'Pending' && <button className='pay-button' onClick={() => handlePayClick(booking._id)}>Pay Amount</button>}
+                {(booking.status === 'Confirmed' || booking.status === 'Pending') && <button className='cancel-booking-button'
+              onClick={handleCancelClick}>Cancel booking</button>}
+              </div>
             </div>
+          </div>
         </div>
   )
 }
