@@ -129,7 +129,7 @@ const MyBookings = () => {
             <p><strong>NOTES:</strong><br />1. You can make <strong>payment</strong> till <strong>1 day before your booking start date.</strong> If you fail to do so, the <strong>booking</strong> will be automatically <strong>cancelled.</strong> <br /><br /> 2. You can <strong>cancel your bookings</strong> only <strong>till the booking start date</strong> after that bookings will not be canceled.</p>
         </div>
         <div className='my-bookings-card-container'>
-            {bookings?  vanCard :<div className='my-bookings-no-bookings-case'>Looks like you have no bookings</div> }
+            {vanCard}
         </div>
       </div>
     </div>

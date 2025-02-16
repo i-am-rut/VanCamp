@@ -889,8 +889,53 @@ nav > a > svg {
 
 /* Host vans -----------------------------------------------------*/
 
+.host-income-page-container{
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.host-income-page-title {
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 1.25rem;    
+}
+
+.host-income-page-filter-container {
+    margin-bottom: 1rem;
+}
+
+.host-income-filter-title {
+    margin-right: 0.5rem;
+}
+
+.host-income-filter-selector {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 0.375rem;
+}
+
+.host-income-bar-graph-container {
+    width: 100%;
+    max-width: 40rem;
+
+}
+
+.host-income-summary-container {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background-color: #f3f4f6;
+}
+
+
+/* Host vans -----------------------------------------------------*/
+
 .host-vans-page-container {
     padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .host-vans-page-container h1 {
@@ -940,6 +985,8 @@ nav > a > svg {
     background-color: #161616;
     padding: 0.8rem 1rem;
     border-radius: 0.5rem;
+    margin-top: 3rem;
+    align-self: flex-end;
 }
 
 

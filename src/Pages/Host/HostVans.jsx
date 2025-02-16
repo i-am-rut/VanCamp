@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { GiSurferVan } from 'react-icons/gi'
 
 const HostVans = () => {
 
@@ -26,7 +27,10 @@ const HostVans = () => {
   return (
     <div className='host-vans-page-container'>
         <h1>Your listed vans</h1>
-      {hostVans.length > 0 ? hostVanElement : <h1>Loading...</h1>}
+      {hostVans.length > 0 ? hostVanElement : <div className='my-bookings-page-no-booking-yet-banner-container'>
+            <div className='svg-container'><GiSurferVan /></div>
+            <h1>You have not added any van yet.</h1>
+          </div>}
         <Link to='/host/vans/create-van' className='host-van-page-add-van-link'>+ Add new van</Link>
     </div>
   )

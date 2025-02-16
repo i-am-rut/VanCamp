@@ -6,7 +6,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 const Income = () => {
   const [earnings, setEarnings] = useState(null);
-  const [filter, setFilter] = useState("total"); // Default: Total earnings
+  const [filter, setFilter] = useState("total"); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -47,14 +47,14 @@ const Income = () => {
   };
 
   return (
-    <div className="p-4 bg-white shadow-lg rounded-lg">
-      <h2 className="text-xl font-semibold mb-4">Earnings Summary</h2>
-      <div className="mb-4">
-        <label className="mr-2">Filter:</label>
+    <div className="host-income-page-container">
+      <h2 className="host-income-page-title">Earnings Summary</h2>
+      <div className="host-income-page-filter-container">
+        <label className="host-income-filter-title">Filter:</label>
         <select
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
-          className="p-2 border rounded"
+          className="border rounded host-income-filter-selector"
         >
           <option value="total">Total</option>
           <option value="yearly">Yearly</option>
@@ -62,22 +62,22 @@ const Income = () => {
         </select>
       </div>
 
-      <div className="w-full max-w-2xl">
+      <div className="host-income-bar-graph-container">
         <Bar
           data={chartData}
           options={{
             responsive: true,
             plugins: { legend: { display: true } },
             scales: {
-              y: { beginAtZero: true, ticks: { callback: (value) => `$${value}` } },
+              y: { beginAtZero: true, ticks: { callback: (value) => `₹${value}` } },
             },
           }}
         />
       </div>
 
-      <div className="mt-4 p-3 bg-gray-100 rounded-lg">
-        <p><strong>Total Earnings:</strong> ${earnings.totalEarnings}</p>
-        <p><strong>Average Per Booking:</strong> ${earnings.avgEarnings.toFixed(2)}</p>
+      <div className="host-income-summary-container">
+        <p><strong>Total Earnings:</strong> &#8377;{earnings.totalEarnings}</p>
+        <p><strong>Average Per Booking:</strong> &#8377;{earnings.avgEarnings.toFixed(2)}</p>
         <p><strong>Total Bookings:</strong> {earnings.totalBookings}</p>
       </div>
     </div>
