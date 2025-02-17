@@ -14,7 +14,7 @@ const AuthProvider = ({ children }) => {
 
     const checkLogin = async () => {
         try {
-            const res = await axios.get("http://localhost:5000/api/auth/me", { withCredentials: true });
+            const res = await axios.get("https://vancamp-backend.onrender.com/api/auth/me", { withCredentials: true });
             setUser(res.data.user);
         } catch (error) {
             console.error("Auth check failed:", error.response?.data?.message || error.message)
@@ -26,7 +26,7 @@ const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const res = await axios.post("http://localhost:5000/api/auth/login", {email, password}, {withCredentials: true}) 
+            const res = await axios.post("https://vancamp-backend.onrender.com/api/auth/login", {email, password}, {withCredentials: true}) 
             setUser(res.data)
         } catch (error) {
             throw new Error(error.response?.data?.error || "Login failed")
@@ -35,7 +35,7 @@ const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            await axios.post("http://localhost:5000/api/auth/logout", {}, { withCredentials: true });
+            await axios.post("https://vancamp-backend.onrender.com/api/auth/logout", {}, { withCredentials: true });
             setUser(null);
         } catch (error) {
             console.error("Logout failed:", error.response?.data?.message || error.message);

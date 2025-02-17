@@ -950,7 +950,51 @@ nav > a > svg {
 }
 
 
-/* Host vans -----------------------------------------------------*/
+
+/* Host dashboard -----------------------------------------------------*/
+
+.dashboard-income-section {
+    padding: 1.5rem;
+    max-width: 40rem;
+    background-color: #FFEAD0;
+    text-decoration: none;
+    color: #161616;
+    display: block;
+}
+
+.dashboard-review-section {
+    padding: 1.5rem;
+    max-width: 40rem;
+    background-color: #FFDDB2;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    text-decoration: none;
+    color: #161616;
+}
+
+.dashboard-review-section-star-rating-container {
+    display: flex;
+    align-items: center;
+    gap: 0.125rem;
+}
+
+.dashboard-review-section-star-rating-container > svg {
+    color: #FF8C38;
+}
+
+.dashboard-vans-section {
+    padding: 1.5rem;
+    max-width: 40rem;
+    text-decoration: none;
+    color: #161616;
+    display: block;
+}
+
+
+
+/* Host income -----------------------------------------------------*/
 
 .host-income-page-container{
     margin: 1.5rem;
