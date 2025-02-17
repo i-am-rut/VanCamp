@@ -170,7 +170,11 @@ const MyBookingDetails = () => {
           </div>
           <div className='booking-details-page'>
             <div className='booking-details'>
-              {loading? <ShimmerContentBlock title text cta thumbnailWidth={100} thumbnailHeight={100} /> : <div className='booking-details-van-info'>
+              {loading? <ShimmerContentBlock
+                          title
+                          text
+                          thumbnailWidth={150}
+                        /> : <div className='booking-details-van-info'>
                 <div className='booking-details-image-container'>
                   <img src={booking.vanId.images[0]} alt={`${booking.vanId.name} van`} />
                 </div>

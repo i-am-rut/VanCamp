@@ -1302,10 +1302,8 @@ nav > a > svg {
 
 /* Wrapping Outlet in layout.jsx in semantic main tag */
 main {
-    /* margin-top: 2rem; 
-    max-width: 50rem;
     margin-left: auto;
-    margin-right: auto; */
+    margin-right: auto;
     margin-bottom: 5rem;
 }
 
@@ -1329,4 +1327,31 @@ footer {
     color: #AAAAAA;
     font-weight: 500;
     box-shadow: 0 2rem 1rem rgba(0, 0, 0, 0.6);
+}
+
+
+/* Responsive design -----------------------------------------------------*/
+
+@media (min-width: 30rem ) and (max-width: 48rem ){
+    .vans-list {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 48.001rem ) and (max-width: 64rem ){
+    .vans-list {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 64.001rem ) and (max-width: 80rem ){
+    .vans-list {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 80.001rem ){
+    .vans-list {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
 }

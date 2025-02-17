@@ -23,11 +23,13 @@ import HostVanDetailsPrice from './Pages/Host/HostVanDetailsPrice';
 import Booking from './Pages/Booking';
 import MyBookings from './Pages/MyBookings';
 import MyBookingDetails from './Pages/MyBookingDetails';
+import ScrollToTop from './Utils/ScrollToTop';
 
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
