@@ -215,6 +215,7 @@ const AddHostVan = () => {
                         onChange={handleFormFiles}
                     />
                 </div>
+                <small>Select all images at the same time.</small>
                 <div className="image-previews">
                     {imagePreviews.length > 0 &&
                         imagePreviews.map((preview, index) => (

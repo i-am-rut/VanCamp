@@ -1185,9 +1185,9 @@ nav > a > svg {
 
 .host-van-details-image {
     width: 35%;
-    min-width: 10rem;
     height: 35%;
-    min-height: 10rem;
+    max-width: 10rem;
+    max-height: 10rem;
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.6);
 }
 
@@ -1205,6 +1205,31 @@ nav > a > svg {
 .host-vans-details-info-container p {
     line-height: 1.5rem;
     font-weight: 500;
+}
+
+.van-buttons-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.edit-van-button, .delete-van-button {
+    padding: 0.6rem 1rem;
+    background-color: #115E59;
+    color: #FFFFFF;
+    border-radius: 0.4rem;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 0.05rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.delete-van-button {
+    background-color: crimson;
+    font-size: 1rem;
 }
 
 .host-van-details-page-photos-container {

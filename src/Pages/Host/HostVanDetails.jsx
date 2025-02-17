@@ -1,10 +1,12 @@
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link, NavLink, Outlet, useParams } from 'react-router-dom'
-
+// useNavigate
 const HostVanDetails = () => {
 
     const param = useParams()
     const [hostVan, setHostVan] = useState(null)
+    // const navigate = useNavigate()
     const activeStyles = {
         fontWeight: "bold",
         textDecoration: "underline",
@@ -12,10 +14,43 @@ const HostVanDetails = () => {
     };
     
     useEffect(() => {
-        fetch(`/api/host/vans/${param.vanId}`)
-            .then(res => res.json())
-            .then(data => setHostVan(data.vans[0]))
-    }, [param.vanId])
+        const getVan = async () => {
+          try {
+            const response = await fetch(`https://vancamp-backend.onrender.com/api/vans/${param.id}`, { method: "GET" })
+    
+            if (response.ok) {
+              const data = await response.json()
+              setHostVan(data)
+            } else {
+              const errorData = await response.json()
+              console.log('Error:-', errorData)
+            }
+          } catch (error) {
+            console.log('Request failed:', error)
+          }
+        }
+        getVan()
+      }, [param.id])
+
+    //   const handleEditVan = async() => {
+    //     try {
+    //         const res = await axios.patch(`http://localhost:5000/vans/edit/${param.id}`, {withCredentials: true})
+    //         console.log(res)
+    //         // navigate('..')
+    //     } catch (error) {
+            
+    //     }
+    //   }
+
+      const handleDeleteVan = async() => {
+        try {
+            const res = await axios.delete(`https://vancamp-backend.onrender.com/vans/${param.id}`, {withCredentials: true})
+            console.log(res.message)
+            // navigate('..')
+        } catch (error) {
+            
+        }
+      }
 
 
   return (
@@ -25,11 +60,11 @@ const HostVanDetails = () => {
             (
                 <div className='host-van-details-container'>
                     <div className='host-van-details-preview'>
-                        <img src={hostVan.imageUrl} alt={`${hostVan.name} van`} className='host-van-details-image' />
+                        <img src={hostVan.images[0]} alt={`${hostVan.name} van`} className='host-van-details-image' />
                         <div className='host-van-details-info'>
-                            <i className={`van-type ${hostVan.type}`}>{hostVan.type}</i>
+                            <i className={`van-type ${hostVan.category}`}>{hostVan.category}</i>
                             <h2>{hostVan.name}</h2>
-                            <p><span className='price'>${hostVan.price}</span>/day</p>
+                            <p><span className='price'>&#8377;{hostVan.basePrice}</span>/day</p>
                         </div>
                     </div>
                     <nav className='host-van-details-navbar-container'>
@@ -51,6 +86,16 @@ const HostVanDetails = () => {
                         >Photos</NavLink>
                     </nav>
                     <Outlet context={hostVan} />
+                    <div className='van-buttons-container'>
+                        <Link 
+                            className='edit-van-button'
+                            to={`/host/vans/edit/${param.id}`}
+                        >Edit van</Link>
+                        <button 
+                            className='delete-van-button'
+                            onClick={handleDeleteVan}
+                        >Delete van</button>
+                    </div>
                 </div> 
             ) : <h1>Loading...</h1>}        
     </div>
