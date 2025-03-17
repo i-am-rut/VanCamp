@@ -50,12 +50,10 @@ const Signup = () => {
             password,
             role,
         };
-
-        const url = process.env.NODE_ENV === "development"? "http://localhost5000" : "https://vancamp-backend.onrender.com"
     
         try {
             // Make the POST request to the backend API
-            const response = await fetch(`${url}/api/auth/register`, {
+            const response = await fetch("https://vancamp-backend.onrender.com/api/auth/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json", // Set content type to JSON

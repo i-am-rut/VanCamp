@@ -12,12 +12,11 @@ const HostVanDetails = () => {
         textDecoration: "underline",
         color: "#161616"
     };
-    const url = process.env.NODE_ENV === "development"? "http://localhost5000" : "https://vancamp-backend.onrender.com"
     
     useEffect(() => {
         const getVan = async () => {
           try {
-            const response = await fetch(`${url}/api/vans/${param.id}`, { method: "GET" })
+            const response = await fetch(`https://vancamp-backend.onrender.com/api/vans/${param.id}`, { method: "GET" })
     
             if (response.ok) {
               const data = await response.json()
@@ -35,7 +34,7 @@ const HostVanDetails = () => {
 
     //   const handleEditVan = async() => {
     //     try {
-    //         const res = await axios.patch(`${url}/api/vans/edit/${param.id}`, {withCredentials: true})
+    //         const res = await axios.patch(`http://localhost:5000/api/vans/edit/${param.id}`, {withCredentials: true})
     //         console.log(res)
     //         // navigate('..')
     //     } catch (error) {
@@ -45,7 +44,7 @@ const HostVanDetails = () => {
 
       const handleDeleteVan = async() => {
         try {
-            const res = await axios.delete(`${url}/api/vans/${param.id}`, {withCredentials: true})
+            const res = await axios.delete(`https://vancamp-backend.onrender.com/api/vans/${param.id}`, {withCredentials: true})
             console.log(res.message)
             // navigate('..')
         } catch (error) {
