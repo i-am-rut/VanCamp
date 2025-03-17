@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 
 const Vans = () => {
   const [vans, setVans] = useState([])
+  const [displayVans, setDisplayVans] = useState([])
   const [searchParams, setSearchparams] = useSearchParams()
 
   const categoryFilter = searchParams.get("category")
@@ -16,6 +17,7 @@ const Vans = () => {
       if (response.ok) {
         const data = await response.json()
         setVans(data)
+        setDisplayVans(data)
       } else {
         const errorData = await response.json()
         console.log('Error:-', errorData)
@@ -27,9 +29,17 @@ const Vans = () => {
 
   useEffect(() => {
     getVans()
-  }, [categoryFilter])
+  }, [])
 
-  const vanElements = vans.map(van => (
+  useEffect(() => {
+    if(categoryFilter) {
+      setDisplayVans(vans.filter(van => van.category === categoryFilter))
+    } else {
+      setDisplayVans(vans)
+    }
+  }, [categoryFilter, vans])
+
+  const vanElements = displayVans.map(van => (
     <div key={van._id} className='van-card-container'>
       <Link to={`/vans/${van._id}`}>
         <img src={van.images[0]} className='van-card-img' alt={`${van.name} van`} />
