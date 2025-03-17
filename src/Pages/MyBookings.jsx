@@ -16,9 +16,11 @@ const MyBookings = () => {
         return newDate
     }
 
+    const url = process.env.NODE_ENV === "development"? "http://localhost5000" : "https://vancamp-backend.onrender.com"
+
       const getUserBookings = async () => {
         try {
-            const res = await axios.get('https://vancamp-backend.onrender.com/api/bookings/mybookings', {withCredentials: true})
+            const res = await axios.get(`${url}/api/bookings/mybookings`, {withCredentials: true})
             if (res.message === "No available bookings") {
                 setBookings([])
             }
@@ -36,7 +38,7 @@ const MyBookings = () => {
     const handlePayClick = async (bookingId) => {
         try {
           
-          const { data } = await axios.post("https://vancamp-backend.onrender.com/api/transactions/create-order", { bookingId }, {withCredentials: true});
+          const { data } = await axios.post(`${url}/api/transactions/create-order`, { bookingId }, {withCredentials: true});
       
           if (!data.order) {
             alert("Error creating order. Please try again.");
@@ -62,7 +64,7 @@ const MyBookings = () => {
             handler: async function (response) {
               try {
                 // Verify payment with backend
-                const verifyRes = await axios.post("https://vancamp-backend.onrender.com/api/transactions/verify-payment", {
+                const verifyRes = await axios.post(`${url}/api/transactions/verify-payment`, {
                   bookingId,
                   razorpayPaymentId: response.razorpay_payment_id,
                   razorpayOrderId: response.razorpay_order_id,

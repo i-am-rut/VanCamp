@@ -28,11 +28,12 @@ const Booking = () => {
         return newDate
     }
 
+    const url = process.env.NODE_ENV === "development"? "http://localhost5000" : "https://vancamp-backend.onrender.com"
 
     useEffect(() => {
         const getVan = async () => {
             try {
-                const response = await fetch(`https://vancamp-backend.onrender.com/api/vans/${param.vanId}`, { method: "GET" })
+                const response = await fetch(`${url}/api/vans/${param.vanId}`, { method: "GET" })
 
                 if (response.ok) {
                     const data = await response.json()
@@ -60,7 +61,7 @@ const Booking = () => {
     const handleCheckAvailability = async (e) => {
         e.preventDefault()
         try {
-            const res = await axios.get(`https://vancamp-backend.onrender.com/api/bookings/availability/${param.vanId}?fromDate=${availability.fromDate}&tillDate=${availability.tillDate}`)
+            const res = await axios.get(`http://localhost:5000/api/bookings/availability/${param.vanId}?fromDate=${availability.fromDate}&tillDate=${availability.tillDate}`)
             if (res.data.available === true) {
                 setMessage(`This van is available for booking between ${dateConverter(availability.fromDate)} and ${dateConverter(availability.tillDate)} preceed to book the van below`)
                 setDone(false)
@@ -78,13 +79,14 @@ const Booking = () => {
         const { vanId, fromDate, tillDate, renterContact } = bookingInfo
 
         try {
-            const res = await axios.post('https://vancamp-backend.onrender.com/api/bookings/create', {
+            const res = await axios.post('http://localhost:5000/api/bookings/create', {
                 vanId,
                 startDate: fromDate,
                 endDate: tillDate,
                 renterContact,
                 addOns: []
             }, {withCredentials: true})
+            console.log(res)
             setMessage(`${res.message} Redirecting to your bookings in 3 seconds.`)
             setTimeout(() => {
                 navigate('/my-bookings')
@@ -114,6 +116,7 @@ const Booking = () => {
                         <label htmlFor="booking-from-date">From date:</label>
                         <input
                             id='booking-from-date'
+                            placeholder='dd-mm-yyyy'
                             type='date'
                             name='fromDate'
                             value={availability.fromDate}
@@ -123,6 +126,7 @@ const Booking = () => {
                         <label htmlFor="booking-till-date">Till date:</label>
                         <input
                             id='booking-till-date'
+                            placeholder='dd-mm-yyyy'
                             type='date'
                             name='tillDate'
                             value={availability.tillDate}

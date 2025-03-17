@@ -6,6 +6,7 @@ export const AuthContext = createContext()
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const url = process.env.NODE_ENV === "development"? "http://localhost5000" : "https://vancamp-backend.onrender.com"
 
 
     useEffect(() => {
@@ -14,7 +15,7 @@ const AuthProvider = ({ children }) => {
 
     const checkLogin = async () => {
         try {
-            const res = await axios.get("https://vancamp-backend.onrender.com/api/auth/me", { withCredentials: true });
+            const res = await axios.get(`${url}/api/auth/me`, { withCredentials: true });
             setUser(res.data.user);
         } catch (error) {
             console.error("Auth check failed:", error.response?.data?.message || error.message)
@@ -26,7 +27,7 @@ const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const res = await axios.post("https://vancamp-backend.onrender.com/api/auth/login", {email, password}, {withCredentials: true}) 
+            const res = await axios.post(`${url}/api/auth/login`, {email, password}, {withCredentials: true}) 
             setUser(res.data)
         } catch (error) {
             throw new Error(error.response?.data?.error || "Login failed")
@@ -35,7 +36,7 @@ const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            await axios.post("https://vancamp-backend.onrender.com/api/auth/logout", {}, { withCredentials: true });
+            await axios.post(`${url}/api/auth/logout`, {}, { withCredentials: true });
             setUser(null);
         } catch (error) {
             console.error("Logout failed:", error.response?.data?.message || error.message);

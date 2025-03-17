@@ -3,7 +3,9 @@ import { Link, useSearchParams } from 'react-router-dom'
 
 const Vans = () => {
   const [vans, setVans] = useState([])
+  const [displayVans, setDisplayVans] = useState([])
   const [searchParams, setSearchparams] = useSearchParams()
+  const url = process.env.NODE_ENV === "development"? "http://localhost5000" : "https://vancamp-backend.onrender.com"
 
   const categoryFilter = searchParams.get("category")
 
@@ -11,11 +13,12 @@ const Vans = () => {
 
   const getVans = async () => {
     try {
-      const response = await fetch("https://vancamp-backend.onrender.com/api/vans", { method: "GET" })
+      const response = await fetch(`${url}/api/vans`, { method: "GET" })
 
       if (response.ok) {
         const data = await response.json()
         setVans(data)
+        setDisplayVans(data)
       } else {
         const errorData = await response.json()
         console.log('Error:-', errorData)
@@ -27,9 +30,9 @@ const Vans = () => {
 
   useEffect(() => {
     getVans()
-  }, [categoryFilter])
+  }, [])
 
-  const vanElements = vans.map(van => (
+  const vanElements = displayVans.map(van => (
     <div key={van._id} className='van-card-container'>
       <Link to={`/vans/${van._id}`}>
         <img src={van.images[0]} className='van-card-img' alt={`${van.name} van`} />

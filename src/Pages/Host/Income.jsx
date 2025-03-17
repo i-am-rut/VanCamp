@@ -9,12 +9,13 @@ const Income = () => {
   const [filter, setFilter] = useState("total"); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const url = process.env.NODE_ENV === "development"? "http://localhost5000" : "https://vancamp-backend.onrender.com"
 
   useEffect(() => {
     const fetchEarnings = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`https://vancamp-backend.onrender.com/api/host/earnings?filter=${filter}`, { credentials: "include" });
+        const res = await fetch(`${url}/api/host/earnings?filter=${filter}`, { credentials: "include" });
         const data = await res.json();
 
         if (!res.ok) throw new Error(data.message || "Failed to fetch earnings");

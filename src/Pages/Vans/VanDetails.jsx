@@ -8,11 +8,12 @@ const VanDetails = () => {
   const param = useParams()
   const [van, setVan] = useState(null)
   const navigate = useNavigate()
+  const url = process.env.NODE_ENV === "development"? "http://localhost5000" : "https://vancamp-backend.onrender.com"
 
   useEffect(() => {
     const getVan = async () => {
       try {
-        const response = await fetch(`https://vancamp-backend.onrender.com/api/vans/${param.id}`, { method: "GET" })
+        const response = await fetch(`${url}/api/vans/${param.id}`, { method: "GET" })
 
         if (response.ok) {
           const data = await response.json()

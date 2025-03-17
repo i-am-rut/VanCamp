@@ -6,11 +6,12 @@ import axios from 'axios'
 const HostVans = () => {
 
     const [hostVans, setHostVans] = useState([])
+    const url = process.env.NODE_ENV === "development"? "http://localhost5000" : "https://vancamp-backend.onrender.com"
 
     useEffect(() => {
         const getHostVans = async () => {
             try {
-                const res = await axios.get('https://vancamp-backend.onrender.com/api/host/vans', { withCredentials: true })
+                const res = await axios.get(`${url}/api/host/vans`, { withCredentials: true })
                 setHostVans(res.data)
             } catch (error) {
                 console.log(error.message)

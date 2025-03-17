@@ -65,12 +65,14 @@ const MyBookingDetails = () => {
         return newDate
     }
 
+    const url = process.env.NODE_ENV === "development"? "http://localhost5000" : "https://vancamp-backend.onrender.com"
+
     useEffect(() => {
 
         const getBooking = async () => {
             try {
                 setLoading(true)
-                const res = await axios.get(`https://vancamp-backend.onrender.com/api/bookings/${param.bookingId}`, {withCredentials: true})
+                const res = await axios.get(`${url}/api/bookings/${param.bookingId}`, {withCredentials: true})
 
                 if(res.status === 200) {
                   setBooking(res.data)
@@ -90,7 +92,7 @@ const MyBookingDetails = () => {
     const handlePayClick = async (bookingId) => {
         try {
           
-          const { data } = await axios.post("https://vancamp-backend.onrender.com/api/transactions/create-order", { bookingId }, {withCredentials: true});
+          const { data } = await axios.post(`${url}/api/transactions/create-order`, { bookingId }, {withCredentials: true});
       
           if (!data.order) {
             alert("Error creating order. Please try again.");
@@ -116,7 +118,7 @@ const MyBookingDetails = () => {
             handler: async function (response) {
               try {
                 // Verify payment with backend
-                const verifyRes = await axios.post("https://vancamp-backend.onrender.com/api/transactions/verify-payment", {
+                const verifyRes = await axios.post(`${url}/api/transactions/verify-payment`, {
                   bookingId,
                   razorpayPaymentId: response.razorpay_payment_id,
                   razorpayOrderId: response.razorpay_order_id,
@@ -153,7 +155,7 @@ const MyBookingDetails = () => {
 
     const handleCancelClick = async (bookingId) => {
         try {
-          const response = await axios.patch(`https://vancamp-backend.onrender.com/api/bookings/cancel/${bookingId}`);
+          const response = await axios.patch(`${url}/api/bookings/cancel/${bookingId}`);
           
           console.log("Booking canceled successfully:", response.data);
           return response.data;

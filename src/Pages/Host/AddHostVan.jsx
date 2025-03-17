@@ -75,6 +75,8 @@ const AddHostVan = () => {
         const previews = Array.from(files).map((file) => URL.createObjectURL(file));
         setImagePreviews(previews);
     };
+
+    const url = process.env.NODE_ENV === "development"? "http://localhost5000" : "https://vancamp-backend.onrender.com"
     
     
     const handleAddVan = async (e) => {
@@ -101,7 +103,7 @@ const AddHostVan = () => {
         
         try {
             const response = await axios.post(
-                'https://vancamp-backend.onrender.com/api/vans/create', formData, { withCredentials: true, headers: {
+                `${url}/api/vans/create`, formData, { withCredentials: true, headers: {
                         'Content-Type': 'multipart/form-data',
                     },
                 }
