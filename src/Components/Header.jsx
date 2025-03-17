@@ -39,9 +39,7 @@ const Header = () => {
           <Menu.Button onClick={handleMenuClick}><GiHamburgerMenu /></Menu.Button>
           <Menu.Dropdown toggle={toggle} onClick={handleMenuItemClick}>
             <Menu.Item><Link to='/profile'>Profile</Link></Menu.Item>
-            <Menu.Item>{user?.role === 'host' && <Link
-              to="host"
-            >Host</Link>}</Menu.Item>
+            {user?.role === 'host' &&  <Menu.Item><Link to="host">Host</Link></Menu.Item>}
             <Menu.Item><Link to='/my-bookings'>My bookings</Link></Menu.Item>
             <button 
               className='logout-button'   onClick={handleLogout}>

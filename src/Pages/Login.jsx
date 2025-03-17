@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { FaEye } from 'react-icons/fa'
 import {AuthContext} from '../Utils/AuthProvider'
 
 const Login = () => {
     const {login} = useContext(AuthContext)
+    const location = useLocation()
     const navigate = useNavigate()
     const [loginData, setLoginData] = useState({
         email: '',
@@ -12,6 +13,7 @@ const Login = () => {
     })
     const [isVisible, setIsVisible] = useState(false)
     const [message, setMessage] = useState('')
+    const original = location.state?.from || "/"
 
     const handleInputChange = (e) => {
         setLoginData({ ...loginData, [e.target.name]: e.target.value })
@@ -24,11 +26,10 @@ const Login = () => {
 
     const handleLoginClick = async (event) => {
         event.preventDefault();
-    
         try {
             
             await login(loginData.email, loginData.password)
-            navigate("/", {replace: true})
+            navigate(original, {replace: true})
 
         } catch (error) {
             setMessage(error.message);
@@ -37,6 +38,7 @@ const Login = () => {
 
     return (
         <div className='login-page-container'>
+            {original !== "/" && <p style={{fontWeight: "bold", color: "red"}}>You must login first</p>}
             <h1>Sign in to your account</h1>
             <div className='login-form-container'>
                 <form>
@@ -66,7 +68,7 @@ const Login = () => {
                 </form>
                 <div className='login-page-signup-link-container'>
                     <p>Don't have an account?</p>
-                    <Link to='/signup' className="login-page-signup-link">Create one now</Link>
+                    <Link to='/signup' state={ {from : original} } className="login-page-signup-link">Create one now</Link>
                 </div>
             </div>
         </div>

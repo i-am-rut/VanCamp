@@ -29,7 +29,7 @@ const HostVans = () => {
                         <p><span>&#8377;{van.basePrice}</span>/day</p>
                     </div>
                 </Link>
-                <Link className='host-van-edit-link' to={`/host/vans/${van._id}/edit`}>Edit</Link>
+                <Link className='host-van-edit-link' to={`/host/vans/edit/${van._id}`}>Edit</Link>
             </div>
         </div>
     ))

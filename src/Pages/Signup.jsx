@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { FaEye } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const Signup = () => {
     const navigate = useNavigate()
+    const location = useLocation()
 
     const[regData, setRegData] = useState({
         name: '',
@@ -19,6 +20,8 @@ const Signup = () => {
         password: false,
         repassword: false
     })
+    const from = location.state?.from || "/"
+    console.log(from)
     
     const validateForm = () => {
         const { name, email, password, rePassword } = regData
@@ -69,7 +72,7 @@ const Signup = () => {
                     setMessage(`${data.message} Redirecting to Login page in 4 seconds`)
                 }
                 setTimeout(() => {
-                    navigate('/login')
+                    navigate("/login", { state: { from : from }, replace : true })
                 }, 4000)
             } else {
                 const errorData = await response.json(); // Parse the error response

@@ -24,6 +24,7 @@ import Booking from './Pages/Booking';
 import MyBookings from './Pages/MyBookings';
 import MyBookingDetails from './Pages/MyBookingDetails';
 import ScrollToTop from './Utils/ScrollToTop';
+import AuthLayout from './Components/AuthLayout';
 
 
 function App() {
@@ -36,25 +37,29 @@ function App() {
           <Route path='about' element={<About />} />
           <Route path='vans' element={<Vans />} />
           <Route path='vans/:id' element={<VanDetails />} />
-          <Route path='host' element={<HostLayout />} >
-            <Route index element={<Dashboard />} />
-            <Route path='income' element={<Income />} />
-            <Route path='vans' element={<HostVans />} />
-            <Route path='vans/create-van' element={<AddHostVan />} />
-            <Route path='vans/edit/:id' element={<EditVan />} />              
-            <Route path='vans/:id' element={<HostVanDetails />} >
-              <Route index element={<HostVanDetailsInfo />} />
-              <Route path='price' element={<HostVanDetailsPrice />} />
-              <Route path='photos' element={<HostVanDetailsPhotos />} />
+          <Route element={<AuthLayout />} >
+            <Route path='host' element={<HostLayout />} >
+              <Route index element={<Dashboard />} />
+              <Route path='income' element={<Income />} />
+              <Route path='vans' element={<HostVans />} />
+              <Route path='vans/create-van' element={<AddHostVan />} />
+              <Route path='vans/edit/:id' element={<EditVan />} />              
+              <Route path='vans/:id' element={<HostVanDetails />} >
+                <Route index element={<HostVanDetailsInfo />} />
+                <Route path='price' element={<HostVanDetailsPrice />} />
+                <Route path='photos' element={<HostVanDetailsPhotos />} />
+              </Route>
+              <Route path='reviews' element={<Reviews />} />
             </Route>
-            <Route path='reviews' element={<Reviews />} />
           </Route>
           <Route path='login' element={<Login />} />
           <Route path='signup' element={<Signup />} />
-          <Route path='booking/:vanId' element={<Booking />} />
-          <Route path='my-bookings' element={<MyBookings />} />
-          <Route path='my-bookings/:bookingId' element={<MyBookingDetails />} />
-          <Route path='profile' element={<Profile />} />
+          <Route element={<AuthLayout />} >
+            <Route path='booking/:vanId' element={<Booking />} />
+            <Route path='my-bookings' element={<MyBookings />} />
+            <Route path='my-bookings/:bookingId' element={<MyBookingDetails />} />
+            <Route path='profile' element={<Profile />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
