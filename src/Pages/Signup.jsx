@@ -21,7 +21,6 @@ const Signup = () => {
         repassword: false
     })
     const from = location.state?.from || "/"
-    console.log(from)
     
     const validateForm = () => {
         const { name, email, password, rePassword } = regData

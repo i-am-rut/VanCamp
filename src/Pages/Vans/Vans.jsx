@@ -73,7 +73,11 @@ const Vans = () => {
           >Clear filter</button>}
       </div>
       <div className='vans-list filter-button'>
-        {vans.length > 0 ? vanElements : <h1>Loading...</h1>}
+        {vans.length > 0 ? vanElements : <div>
+          <h1>Loading...</h1>
+          <h3>Backend is hosted using Render with free service option which may cause delay in getting first response (upto 30s). Later it responds quickly.</h3>
+          </div>
+        }
       </div>
     </div>
   )
